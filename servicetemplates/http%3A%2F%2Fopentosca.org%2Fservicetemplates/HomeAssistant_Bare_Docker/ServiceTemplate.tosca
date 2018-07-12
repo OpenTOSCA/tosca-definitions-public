@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns4-HomeAssistant_Bare_Docker" targetNamespace="http://opentosca.org/servicetemplates">
+    <tosca:ServiceTemplate name="HomeAssistant_Bare_Docker" targetNamespace="http://opentosca.org/servicetemplates" id="HomeAssistant_Bare_Docker">
+        <tosca:BoundaryDefinitions>
+            <tosca:Properties>
+                <ns1:selfserviceApplicationUrl xmlns:ns1="http://www.eclipse.org/winery/model/selfservice"/>
+                <tosca:PropertyMappings>
+                    <tosca:PropertyMapping serviceTemplatePropertyRef="/*[local-name()='selfserviceApplicationUrl']" targetObjectRef="HomeAssistant-DockerContainer" targetPropertyRef="concat('http://', HomeAssistant-DockerContainer.Properties.ContainerIP, ':', HomeAssistant-DockerContainer.Properties.Port)"/>
+                </tosca:PropertyMappings>
+            </tosca:Properties>
+        </tosca:BoundaryDefinitions>
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate xmlns:ns3="http://opentosca.org/nodetypes" name="HomeAssistant-DockerContainer" type="ns3:HomeAssistant-DockerContainer" id="HomeAssistant-DockerContainer" winery:location="undefined" winery:x="414.984" winery:y="118.991">
+                <tosca:Properties>
+                    <ns6:Properties xmlns:ns6="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ContainerPort>8123</ContainerPort>
+                        <Port>get_input: ApplicationPort</Port>
+                        <SSHPort/>
+			</ns6:Properties>
+                </tosca:Properties>
+                <tosca:DeploymentArtifacts>
+                    <tosca:DeploymentArtifact xmlns:ns13="http://opentosca.org/artifacttypes" xmlns:ns9="http://opentosca.org/artifacttemplates" name="HomeAssistant_DA" artifactType="ns13:DockerContainerArtifact" artifactRef="ns9:HomeAssistant_Docker_DA"/>
+                </tosca:DeploymentArtifacts>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns3="http://opentosca.org/nodetypes" name="DockerEngine" type="ns3:DockerEngine" id="DockerEngine" winery:location="undefined" winery:x="414.99" winery:y="426.996">
+                <tosca:Properties>
+                    <ns5:DockerEngine_Properties xmlns:ns5="http://opentosca.org/nodetypes/properties" xmlns="http://opentosca.org/nodetypes/properties" xmlns:ty="http://opentosca.org/nodetypes">
+                        <DockerEngineURL>get_input: DockerEngineURL</DockerEngineURL>
+                        <DockerEngineCertificate/>
+			</ns5:DockerEngine_Properties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:RelationshipTemplate xmlns:ns7="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_13" type="ns7:HostedOn" id="con_13">
+                <tosca:SourceElement ref="HomeAssistant-DockerContainer"/>
+                <tosca:TargetElement ref="DockerEngine"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

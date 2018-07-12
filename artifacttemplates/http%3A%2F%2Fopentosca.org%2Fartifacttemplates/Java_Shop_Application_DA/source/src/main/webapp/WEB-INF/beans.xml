@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	<jaxws:endpoint xmlns:tns="http://nodetypeimplementations.opentosca.org/"
+		id="org_opentosca_nodetypes_Java_Shop_Application__org_opentosca_interfaces_database" implementor="org.opentosca.nodetypeimplementations.org_opentosca_nodetypes_Java_Shop_Application__org_opentosca_interfaces_database"
+		wsdlLocation="wsdl/org_opentosca_nodetypes_Java_Shop_Application__org_opentosca_interfaces_database.wsdl" endpointName="tns:org_opentosca_nodetypes_Java_Shop_Application__org_opentosca_interfaces_databasePort"
+		serviceName="tns:org_opentosca_nodetypes_Java_Shop_Application__org_opentosca_interfaces_databaseService" address="/org_opentosca_nodetypes_Java_Shop_Application__org_opentosca_interfaces_databasePort">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+	</jaxws:endpoint>
+</beans>

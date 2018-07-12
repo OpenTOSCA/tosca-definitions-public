@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12"
+  targetNamespace="http://opentosca.org/policytypes/annotations/tests"
+  id="winery-defs-for_tests-Test">
+  <PolicyType name="Test" abstract="yes" final="no"
+    targetNamespace="http://opentosca.org/policytypes/annotations/tests"/>
+</Definitions>

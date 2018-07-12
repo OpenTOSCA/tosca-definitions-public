@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions id="winery-defs-for_ns5-MongoDB-Server_3.2_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
+    <tosca:NodeTypeImplementation name="MongoDB-Server_3.2_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" nodeType="ns6:MongoDB-Server_3.2" xmlns:ns6="http://opentosca.org/nodetypes">
+        <tosca:ImplementationArtifacts>
+            <tosca:ImplementationArtifact name="MongoDB-Server-Install_IA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="install" artifactType="ns4:ScriptArtifact" artifactRef="ns3:MongoDB-Server_3.2_Impl_InstallIA" xmlns:ns4="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns3="http://opentosca.org/artifacttemplates"/>
+            <tosca:ImplementationArtifact name="MongoDB-Server-Start_IA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="start" artifactType="ns4:ScriptArtifact" artifactRef="ns3:MongoDB-Server_3.2_Impl_StartIA" xmlns:ns4="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns3="http://opentosca.org/artifacttemplates"/>
+        </tosca:ImplementationArtifacts>
+    </tosca:NodeTypeImplementation>
+</tosca:Definitions>

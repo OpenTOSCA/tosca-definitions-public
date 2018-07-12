@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions id="winery-defs-for_ns0-HomeAssistant-DockerContainer" targetNamespace="http://opentosca.org/nodetypes" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns6="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
+    <tosca:NodeType name="HomeAssistant-DockerContainer" targetNamespace="http://opentosca.org/nodetypes" winery:bordercolor="#9b54f3">
+        <winery:PropertiesDefinition elementname="Properties" namespace="http://opentosca.org/nodetypes/propertiesdefinition/winery">
+            <winery:properties>
+                <winery:key>ContainerPort</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>Port</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>SSHPort</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+        </winery:PropertiesDefinition>
+        <tosca:DerivedFrom xmlns:ns4="http://opentosca.org/nodetypes" typeRef="ns4:DockerContainer"/>
+    </tosca:NodeType>
+</tosca:Definitions>

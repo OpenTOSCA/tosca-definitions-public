@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns8="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns2-MyTinyToDoDockerContainer" targetNamespace="http://opentosca.org/nodetypes">
+    <tosca:NodeType name="MyTinyToDoDockerContainer" abstract="no" final="no" targetNamespace="http://opentosca.org/nodetypes" winery:bordercolor="#633a6f">
+        <winery:PropertiesDefinition elementname="Properties" namespace="http://opentosca.org/nodetypes/propertiesdefinition/winery">
+            <winery:properties>
+                <winery:key>ContainerPort</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>Port</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>SSHPort</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>ContainerID</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>ContainerIP</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+        </winery:PropertiesDefinition>
+        <tosca:DerivedFrom xmlns:ns4="http://opentosca.org/nodetypes" typeRef="ns4:DockerContainer"/>
+        <tosca:Interfaces>
+            <tosca:Interface name="http://opentosca.org/interfaces/connections">
+                <tosca:Operation name="connectTo">
+                    <tosca:InputParameters>
+                        <tosca:InputParameter name="VMIP" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="DBName" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="DBMSPort" type="xsd" required="yes"/>
+                        <tosca:InputParameter name="DBUser" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="DBPassword" type="xsd:String" required="yes"/>
+                    </tosca:InputParameters>
+                </tosca:Operation>
+            </tosca:Interface>
+        </tosca:Interfaces>
+    </tosca:NodeType>
+</tosca:Definitions>

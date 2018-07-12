@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns1="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns2-NodeJS_4.4_App" targetNamespace="http://opentosca.org/nodetypes">
+    <tosca:NodeType name="NodeJS_4.4_App" targetNamespace="http://opentosca.org/nodetypes" winery:bordercolor="#48a3e8">
+        <winery:PropertiesDefinition elementname="NodeJSAppProperties" namespace="http://opentosca.org/nodetypes">
+            <winery:properties>
+                <winery:key>Port</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+        </winery:PropertiesDefinition>
+        <tosca:Interfaces>
+            <tosca:Interface name="http://www.example.com/interfaces/lifecycle">
+                <tosca:Operation name="start">
+                    <tosca:InputParameters>
+                        <tosca:InputParameter name="Port" type="xsd:string" required="yes"/>
+                    </tosca:InputParameters>
+                </tosca:Operation>
+            </tosca:Interface>
+        </tosca:Interfaces>
+    </tosca:NodeType>
+</tosca:Definitions>

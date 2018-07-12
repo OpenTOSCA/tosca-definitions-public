@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns2="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns6-OpenStack-Liberty-12_impl" targetNamespace="http://opentosca.org/nodetypeimplementations">
+    <tosca:NodeTypeImplementation xmlns:ns0="http://opentosca.org/nodetypes" name="OpenStack-Liberty-12_impl" targetNamespace="http://opentosca.org/nodetypeimplementations" nodeType="ns0:OpenStack-Liberty-12">
+        <tosca:ImplementationArtifacts>
+            <tosca:ImplementationArtifact xmlns:ns13="http://opentosca.org/artifacttypes" xmlns:ns12="http://opentosca.org/artifacttemplates" name="OpenStack-Liberty-12_CloudProviderInterface_IA" interfaceName="CloudProviderInterface" artifactType="ns13:WAR" artifactRef="ns12:OpenStack-Liberty-12_CloudProviderInterface_IA"/>
+        </tosca:ImplementationArtifacts>
+    </tosca:NodeTypeImplementation>
+</tosca:Definitions>

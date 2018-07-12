@@ -1,0 +1,1 @@
+{"csarName":"HomeAssistant_Bare_Docker.csar","displayName":"HomeAssistant Docker Service","version":"1.0","authors":["Winery"],"description":"Installs the Python Application HomeAssistant as a Docker Container on a locally installed DockerEngine.<br>","iconUrl":"icon.jpg","imageUrl":"image.jpg","options":null}

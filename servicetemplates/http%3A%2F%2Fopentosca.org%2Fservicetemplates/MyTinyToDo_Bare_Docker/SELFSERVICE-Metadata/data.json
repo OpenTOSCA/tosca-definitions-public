@@ -1,0 +1,1 @@
+{"csarName":"MyTinyToDo_Bare_Docker.csar","displayName":"MyTinyToDo Docker Service","version":"1.0","authors":["IAAS,","University","of","Stuttgart"],"description":"Installs the PHP Application MyTinyToDo as a Docker Container on a locally installed DockerEngine.<br>","iconUrl":"icon.jpg","imageUrl":"image.jpg","options":null}

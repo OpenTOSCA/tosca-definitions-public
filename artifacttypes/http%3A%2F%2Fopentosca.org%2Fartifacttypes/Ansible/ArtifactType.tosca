@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions id="winery-defs-for_ns5-Ansible" targetNamespace="http://opentosca.org/artifacttypes" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns6="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
+    <tosca:ArtifactType name="Ansible" targetNamespace="http://opentosca.org/artifacttypes">
+        <winery:PropertiesDefinition elementname="Properties" namespace="http://opentosca.org/artifacttypes/propertiesdefinition/winery">
+            <winery:properties>
+                <winery:key>Playbook</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>Variables</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+        </winery:PropertiesDefinition>
+    </tosca:ArtifactType>
+</tosca:Definitions>

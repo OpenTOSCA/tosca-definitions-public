@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns12-MySQL-DBMS-5.5-Impl" targetNamespace="http://opentosca.org/nodetypeimplementations">
+    <tosca:NodeTypeImplementation xmlns:ns1="http://opentosca.org/nodetypes" name="MySQL-DBMS-5.5-Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" nodeType="ns1:MySQL-DBMS-5.5" abstract="no" final="no">
+        <tosca:ImplementationArtifacts>
+            <tosca:ImplementationArtifact xmlns:ns2="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns3="http://opentosca.org/artifacttemplates" name="MySQL-DBMS-5.5-Install-IA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="install" artifactType="ns2:ScriptArtifact" artifactRef="ns3:MySQL-DBMS-5.5-Install-IA"/>
+            <tosca:ImplementationArtifact xmlns:ns2="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns3="http://opentosca.org/artifacttemplates" name="MySQL-DBMS-5.5-Configure-IA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="configure" artifactType="ns2:ScriptArtifact" artifactRef="ns3:MySQL-DBMS-5.5-Configure-IA"/>
+            <tosca:ImplementationArtifact xmlns:ns2="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns3="http://opentosca.org/artifacttemplates" name="MySQL-DBMS-5.5-Start-IA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="start" artifactType="ns2:ScriptArtifact" artifactRef="ns3:MySQL-DBMS-5.5-Start-IA"/>
+        </tosca:ImplementationArtifacts>
+    </tosca:NodeTypeImplementation>
+</tosca:Definitions>

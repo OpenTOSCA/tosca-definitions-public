@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns2="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns6-Ubuntu-VM-14.04-Impl_-w1" targetNamespace="http://opentosca.org/nodetypeimplementations/versioned">
+    <tosca:NodeTypeImplementation xmlns:ns0="http://opentosca.org/nodetypes/versioned" name="Ubuntu-VM-14.04-Impl_-w1" targetNamespace="http://opentosca.org/nodetypeimplementations/versioned" nodeType="ns0:Ubuntu-VM_14.04-w1">
+        <tosca:ImplementationArtifacts>
+            <tosca:ImplementationArtifact xmlns:ns13="http://opentosca.org/artifacttypes" xmlns:ns12="http://opentosca.org/artifacttemplates/versioned" name="Ubuntu-14.04-VM_OperatingSystemInterface_IA" interfaceName="OperatingSystemInterface" artifactType="ns13:WAR" artifactRef="ns12:Ubuntu-VM-14.04-OperatingSystemInterface-IA_-w1"/>
+        </tosca:ImplementationArtifacts>
+    </tosca:NodeTypeImplementation>
+</tosca:Definitions>

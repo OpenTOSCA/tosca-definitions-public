@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions id="winery-defs-for_ns4-RaspbianJessie" targetNamespace="http://opentosca.org/nodetypes" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns8="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
+    <tosca:NodeType name="RaspbianJessie" abstract="no" final="no" targetNamespace="http://opentosca.org/nodetypes" winery:bordercolor="#05bcf7">
+        <winery:PropertiesDefinition elementname="RaspbianJessieProperties" namespace="http://opentosca.org/nodetypes">
+            <winery:properties>
+                <winery:key>IP</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>User</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>Password</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+        </winery:PropertiesDefinition>
+        <tosca:Interfaces>
+            <tosca:Interface name="OperatingSystemInterface">
+                <tosca:Operation name="installPackage">
+                    <tosca:InputParameters>
+                        <tosca:InputParameter name="VMIP" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="VMUserName" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="VMPrivateKey" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="PackageNames" type="xsd:String" required="yes"/>
+                    </tosca:InputParameters>
+                    <tosca:OutputParameters>
+                        <tosca:OutputParameter name="InstallResult" type="xsd:string" required="yes"/>
+                    </tosca:OutputParameters>
+                </tosca:Operation>
+                <tosca:Operation name="transferFile">
+                    <tosca:InputParameters>
+                        <tosca:InputParameter name="VMIP" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="VMUserName" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="VMPrivateKey" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="TargetAbsolutePath" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="SourceURLorLocalPath" type="xsd:String" required="yes"/>
+                    </tosca:InputParameters>
+                    <tosca:OutputParameters>
+                        <tosca:OutputParameter name="TransferResult" type="xsd:string" required="yes"/>
+                    </tosca:OutputParameters>
+                </tosca:Operation>
+                <tosca:Operation name="runScript">
+                    <tosca:InputParameters>
+                        <tosca:InputParameter name="VMIP" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="VMUserName" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="VMPrivateKey" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="Script" type="xsd:String" required="yes"/>
+                    </tosca:InputParameters>
+                    <tosca:OutputParameters>
+                        <tosca:OutputParameter name="ScriptResult" type="xsd:string" required="yes"/>
+                    </tosca:OutputParameters>
+                </tosca:Operation>
+                <tosca:Operation name="waitForAvailability">
+                    <tosca:InputParameters>
+                        <tosca:InputParameter name="VMIP" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="VMUserName" type="xsd:String" required="yes"/>
+                        <tosca:InputParameter name="VMPrivateKey" type="xsd:String" required="yes"/>
+                    </tosca:InputParameters>
+                    <tosca:OutputParameters>
+                        <tosca:OutputParameter name="WaitResult" type="xsd:string" required="yes"/>
+                    </tosca:OutputParameters>
+                </tosca:Operation>
+            </tosca:Interface>
+        </tosca:Interfaces>
+    </tosca:NodeType>
+</tosca:Definitions>

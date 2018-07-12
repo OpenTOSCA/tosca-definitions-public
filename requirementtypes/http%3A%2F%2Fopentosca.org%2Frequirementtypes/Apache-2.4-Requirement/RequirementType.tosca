@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions id="winery-defs-for_tst-Apache-2.4-Requirement" targetNamespace="http://opentosca.org/requirementtypes" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns6="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
+    <tosca:RequirementType requiredCapabilityType="tst:Apache-2.4-Capability" name="Apache-2.4-Requirement" targetNamespace="http://opentosca.org/requirementtypes" xmlns:tst="http://opentosca.org/capabilitytypes"/>
+</tosca:Definitions>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns9="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns4-NodeJS_4.4_App_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations">
+    <tosca:NodeTypeImplementation xmlns:ns0="http://opentosca.org/nodetypes" name="NodeJS_4.4_App_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" nodeType="ns0:NodeJS_4.4_App">
+        <tosca:ImplementationArtifacts>
+            <tosca:ImplementationArtifact xmlns:ns10="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns2="http://opentosca.org/artifacttemplates" name="NodeJS_4.4_App_Start_IA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="start" artifactType="ns10:ScriptArtifact" artifactRef="ns2:NodeJS_4.4_App_Start_IA"/>
+        </tosca:ImplementationArtifacts>
+    </tosca:NodeTypeImplementation>
+</tosca:Definitions>

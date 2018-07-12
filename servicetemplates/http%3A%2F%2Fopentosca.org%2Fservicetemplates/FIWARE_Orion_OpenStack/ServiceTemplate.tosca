@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns1="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns14-FIWARE_Orion_OpenStack" targetNamespace="http://opentosca.org/servicetemplates">
+    <tosca:ServiceTemplate name="FIWARE_Orion_OpenStack" targetNamespace="http://opentosca.org/servicetemplates" id="FIWARE_Orion_OpenStack">
+        <tosca:BoundaryDefinitions>
+            <tosca:Properties>
+                <ns2:selfserviceApplicationUrl xmlns:ns2="http://www.eclipse.org/winery/model/selfservice"/>
+                <tosca:PropertyMappings>
+                    <tosca:PropertyMapping serviceTemplatePropertyRef="/*[local-name()='selfserviceApplicationUrl']" targetObjectRef="Ubuntu-14_04-VM" targetPropertyRef="concat('http://', Ubuntu-14_04-VM.Properties.VMIP, ':1026/v2')"/>
+                </tosca:PropertyMappings>
+            </tosca:Properties>
+        </tosca:BoundaryDefinitions>
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate xmlns:ns2="http://opentosca.org/nodetypes" name="OpenStack-Liberty-12" type="ns2:OpenStack-Liberty-12" id="OpenStack-Liberty-12" winery:location="undefined" winery:x="593" winery:y="634">
+                <tosca:Properties>
+                    <ns2:CloudProviderProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:HypervisorEndpoint>asflexsm.informatik.uni-stuttgart.de</ty:HypervisorEndpoint>
+                        <ty:HypervisorTenantID>SmartServices</ty:HypervisorTenantID>
+                        <ty:HypervisorUserName>get_input: OpenStackUser</ty:HypervisorUserName>
+                        <ty:HypervisorUserPassword>get_input: OpenStackUserPassword</ty:HypervisorUserPassword>
+			</ns2:CloudProviderProperties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns2="http://opentosca.org/nodetypes" name="Ubuntu-14.04-VM" type="ns2:Ubuntu-14.04-VM" id="Ubuntu-14_04-VM" winery:location="undefined" winery:x="592" winery:y="478">
+                <tosca:Properties>
+                    <ns2:VirtualMachineProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:VMIP/>
+                        <ty:VMInstanceID/>
+                        <ty:VMType>m1.small</ty:VMType>
+                        <ty:VMUserName>ubuntu</ty:VMUserName>
+                        <ty:VMUserPassword>N/A</ty:VMUserPassword>
+                        <ty:VMPrivateKey>get_input: VMPrivateKey</ty:VMPrivateKey>
+                        <ty:VMPublicKey>N/A</ty:VMPublicKey>
+                        <ty:VMKeyPairName>get_input: VMKeyPairName</ty:VMKeyPairName>
+			</ns2:VirtualMachineProperties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns2="http://opentosca.org/nodetypes" name="MongoDB-Server_3.2" type="ns2:MongoDB-Server_3.2" id="MongoDB-Server_3_2" winery:location="undefined" winery:x="755" winery:y="328"/>
+            <tosca:NodeTemplate xmlns:ns2="http://opentosca.org/nodetypes" name="FIWARE-Orion_1.6" type="ns2:FIWARE-Orion_1.6" id="FIWARE-Orion_1_6" winery:location="undefined" winery:x="578" winery:y="126"/>
+            <tosca:RelationshipTemplate xmlns:ns5="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_13" type="ns5:HostedOn" id="con_13">
+                <tosca:SourceElement ref="Ubuntu-14_04-VM"/>
+                <tosca:TargetElement ref="OpenStack-Liberty-12"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:ns5="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_28" type="ns5:HostedOn" id="con_28">
+                <tosca:SourceElement ref="MongoDB-Server_3_2"/>
+                <tosca:TargetElement ref="Ubuntu-14_04-VM"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:ns5="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_46" type="ns5:DependsOn" id="con_46">
+                <tosca:SourceElement ref="FIWARE-Orion_1_6"/>
+                <tosca:TargetElement ref="MongoDB-Server_3_2"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:ns5="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_58" type="ns5:HostedOn" id="con_58">
+                <tosca:SourceElement ref="FIWARE-Orion_1_6"/>
+                <tosca:TargetElement ref="Ubuntu-14_04-VM"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

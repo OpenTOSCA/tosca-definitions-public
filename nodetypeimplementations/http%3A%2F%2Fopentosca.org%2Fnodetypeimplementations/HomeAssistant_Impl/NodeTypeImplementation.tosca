@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions id="winery-defs-for_ns3-HomeAssistant_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
+    <tosca:NodeTypeImplementation name="HomeAssistant_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" nodeType="ns4:HomeAssistant" xmlns:ns4="http://opentosca.org/nodetypes">
+        <tosca:ImplementationArtifacts>
+            <tosca:ImplementationArtifact name="HomeAssistant_Install_IA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="install" artifactType="ns1:ScriptArtifact" artifactRef="ns2:HomeAssistant_Install_IA" xmlns:ns2="http://opentosca.org/artifacttemplates" xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes"/>
+            <tosca:ImplementationArtifact name="HomeAssistant_ConnectTo_IA" interfaceName="http://www.example.com/interfaces/connections" operationName="connectTo" artifactType="ns1:ScriptArtifact" artifactRef="ns2:HomeAssistant_ConnectTo_IA" xmlns:ns2="http://opentosca.org/artifacttemplates" xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes"/>
+            <tosca:ImplementationArtifact name="HomeAssistant_Start_IA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="start" artifactType="ns1:ScriptArtifact" artifactRef="ns2:HomeAssistant_Start_IA" xmlns:ns2="http://opentosca.org/artifacttemplates" xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes"/>
+            <tosca:ImplementationArtifact name="HomeAssistant_Stop_IA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="stop" artifactType="ns1:ScriptArtifact" artifactRef="ns2:HomeAssistant_Stop_IA" xmlns:ns2="http://opentosca.org/artifacttemplates" xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes"/>
+        </tosca:ImplementationArtifacts>
+    </tosca:NodeTypeImplementation>
+</tosca:Definitions>

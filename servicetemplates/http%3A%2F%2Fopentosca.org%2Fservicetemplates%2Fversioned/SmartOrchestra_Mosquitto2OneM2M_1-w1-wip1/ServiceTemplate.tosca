@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/servicetemplates/versioned" id="winery-defs-for_versioned3-SmartOrchestra_Mosquitto2OneM2M_1-w1-wip1">
+    <ServiceTemplate name="SmartOrchestra_Mosquitto2OneM2M_1-w1-wip1" targetNamespace="http://opentosca.org/servicetemplates/versioned" id="SmartOrchestra_Mosquitto2OneM2M_1-w1-wip1">
+        <TopologyTemplate>
+            <NodeTemplate xmlns:otntyIversioned="http://opentosca.org/nodetypes/versioned" name="Ubuntu-VM_14.04-w1" minInstances="1" maxInstances="1" type="otntyIversioned:Ubuntu-VM_14.04-w1" id="Ubuntu-VM_14.04-w1" winery:x="329" winery:y="329">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <VMIP/>
+                        <VMInstanceID/>
+                        <VMType>m1.small</VMType>
+                        <VMUserName>ubuntu</VMUserName>
+                        <VMUserPassword>N/A</VMUserPassword>
+                        <VMPrivateKey>get_input: OpenStackPrivateKey</VMPrivateKey>
+                        <VMPublicKey>N/A</VMPublicKey>
+                        <VMKeyPairName>get_input: OpenStackKeyPairName</VMKeyPairName>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:otntyIversioned="http://opentosca.org/nodetypes/versioned" name="Mosquitto_3.1_1-w1-wip1" minInstances="1" maxInstances="1" type="otntyIversioned:Mosquitto_3.1_1-w1-wip1" id="Mosquitto_3.1_1-w1-wip1" winery:x="329" winery:y="62">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <Certificate/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:otntyIgeneral="http://opentosca.org/nodetypes" name="OpenStack-Liberty-12" minInstances="1" maxInstances="1" type="otntyIgeneral:OpenStack-Liberty-12" id="OpenStack-Liberty-12" winery:x="328" winery:y="770">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <HypervisorEndpoint>get_input: OpenStackEndpoint</HypervisorEndpoint>
+                        <HypervisorTenantID>get_input: OpenStackTenantId</HypervisorTenantID>
+                        <HypervisorUserName>get_input: OpenStackUser</HypervisorUserName>
+                        <HypervisorUserPassword>get_input: OpenStackUserPassword</HypervisorUserPassword>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_1" type="ToscaBaseTypes:HostedOn" id="con_1">
+                <SourceElement ref="Mosquitto_3.1_1-w1-wip1"/>
+                <TargetElement ref="Ubuntu-VM_14.04-w1"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_2" type="ToscaBaseTypes:HostedOn" id="con_2">
+                <SourceElement ref="Ubuntu-VM_14.04-w1"/>
+                <TargetElement ref="OpenStack-Liberty-12"/>
+            </RelationshipTemplate>
+        </TopologyTemplate>
+    </ServiceTemplate>
+</Definitions>

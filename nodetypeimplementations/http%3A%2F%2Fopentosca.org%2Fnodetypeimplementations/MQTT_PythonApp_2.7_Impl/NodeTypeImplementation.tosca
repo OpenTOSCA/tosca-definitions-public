@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions id="winery-defs-for_ns3-MQTT_PythonApp_2.7_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
+    <tosca:NodeTypeImplementation name="MQTT_PythonApp_2.7_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" nodeType="ns4:MQTT_PythonApp_2.7" xmlns:ns4="http://opentosca.org/nodetypes">
+        <tosca:ImplementationArtifacts>
+            <tosca:ImplementationArtifact name="MQTT_PythonApp_2.7_IA_install" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="install" artifactType="ns2:ScriptArtifact" artifactRef="ns1:MQTT_PythonApp_2.7_IA_install" xmlns:ns2="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns1="http://opentosca.org/artifacttemplates"/>
+            <tosca:ImplementationArtifact name="MQTT_PythonApp_2.7_IA_start" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="start" artifactType="ns2:ScriptArtifact" artifactRef="ns1:PyhtonApp_2.7_Impl_StartIA" xmlns:ns2="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns1="http://opentosca.org/artifacttemplates"/>
+            <tosca:ImplementationArtifact name="MQTT_PythonApp_2.7_IA_connectTo" interfaceName="http://www.example.com/interfaces/connections" operationName="connectTo" artifactType="ns2:ScriptArtifact" artifactRef="ns1:PythonApp_ConnectTo_IA" xmlns:ns2="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns1="http://opentosca.org/artifacttemplates"/>
+        </tosca:ImplementationArtifacts>
+    </tosca:NodeTypeImplementation>
+</tosca:Definitions>

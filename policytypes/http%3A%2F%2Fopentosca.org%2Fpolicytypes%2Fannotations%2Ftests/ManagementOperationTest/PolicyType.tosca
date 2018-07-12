@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/policytypes/annotations/tests" id="winery-defs-for_tests-ManagementOperationTest">
+    <PolicyType name="ManagementOperationTest" abstract="no" final="no" targetNamespace="http://opentosca.org/policytypes/annotations/tests">
+        <winery:PropertiesDefinition elementname="properties" namespace="http://opentosca.org/policytypes/annotations/propertiesdefinition/winery">
+            <winery:properties>
+                <winery:key>InterfaceName</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>OperationName</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>ResolveInputParametersFromNodeTemplate</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>TestInputParameters</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>ExpectedOutputParameters</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+        </winery:PropertiesDefinition>
+        <DerivedFrom xmlns:tests="http://opentosca.org/policytypes/annotations/tests" typeRef="tests:Test"/>
+    </PolicyType>
+</Definitions>

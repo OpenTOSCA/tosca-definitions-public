@@ -1,0 +1,1 @@
+{"csarName":"FIWARE_Orion_Bare_Docker.csar","displayName":"FIWARE Orion Docker Service","version":"1.0","authors":["University","of","Stuttgart"],"description":"Installs the FIWARE Orion Context Broker as a Docker Container on an already installed DockerEngine.","iconUrl":"icon.jpg","imageUrl":"image.jpg","options":null}

@@ -1,0 +1,20 @@
+{
+  "data_type": "float",
+  "ID": "tm_stuttgart",
+  "location": "Stuttgart",
+  "message_format": "JSON",
+  "message_structure": "{
+    "title": "provider_schema",
+    "type": "object",
+    "properties": {
+       "value": {"type": "float"}, 
+       "timestamp": {"type": "integer"},
+       "time_up": {"type": "string"}
+     },
+     "required": ["value"]}",
+  "name": "Temperature_Sensor",
+  "owner": "uni_stuttgart",
+  "protocol": "MQTT",
+  "type": "Temperature",
+  "unit": "Celsius"
+}

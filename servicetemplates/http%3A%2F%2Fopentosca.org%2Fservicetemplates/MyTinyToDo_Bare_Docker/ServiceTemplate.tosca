@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns10="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns8-MyTinyToDo_Bare_Docker" targetNamespace="http://opentosca.org/servicetemplates">
+    <tosca:ServiceTemplate name="MyTinyToDo_Bare_Docker" targetNamespace="http://opentosca.org/servicetemplates" id="MyTinyToDo_Bare_Docker">
+        <tosca:Tags>
+            <tosca:Tag name="scalingplans" value="scaleout_dockercontainer"/>
+            <tosca:Tag name="scaleout_dockercontainer" value="MyTinyToDoDockerContainer;con_17;FirstInstance[DockerEngine]"/>
+        </tosca:Tags>
+        <tosca:BoundaryDefinitions>
+            <tosca:Properties>
+                <ns0:selfserviceApplicationUrl xmlns:ns0="http://www.eclipse.org/winery/model/selfservice"/>
+                <tosca:PropertyMappings>
+                    <tosca:PropertyMapping serviceTemplatePropertyRef="/*[local-name()='selfserviceApplicationUrl']" targetObjectRef="MyTinyToDoDockerContainer" targetPropertyRef="concat('http://', MyTinyToDoDockerContainer.Properties.ContainerIP, ':', MyTinyToDoDockerContainer.Properties.Port)"/>
+                </tosca:PropertyMappings>
+            </tosca:Properties>
+        </tosca:BoundaryDefinitions>
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate xmlns:ns5="http://opentosca.org/nodetypes" name="MyTinyToDoDockerContainer" type="ns5:MyTinyToDoDockerContainer" id="MyTinyToDoDockerContainer" winery:x="371" winery:y="143">
+                <tosca:Properties>
+                    <ns12:Properties xmlns:ns12="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ContainerPort>80</ContainerPort>
+                        <Port>get_input: ApplicationPort</Port>
+                        <SSHPort>get_input: ContainerSSHPort</SSHPort>
+                        <ContainerID/>
+                        <ContainerIP/>
+			</ns12:Properties>
+                </tosca:Properties>
+                <tosca:DeploymentArtifacts>
+                    <tosca:DeploymentArtifact xmlns:ns1="http://opentosca.org/artifacttypes" xmlns:ns2="http://opentosca.org/artifacttemplates" name="MyTinyToDo_DA" artifactType="ns1:DockerContainerArtifact" artifactRef="ns2:MyTinyToDo_DA"/>
+                </tosca:DeploymentArtifacts>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns5="http://opentosca.org/nodetypes" name="DockerEngine" type="ns5:DockerEngine" id="DockerEngine" winery:x="371" winery:y="386">
+                <tosca:Properties>
+                    <ns11:DockerEngine_Properties xmlns:ns11="http://opentosca.org/nodetypes/properties" xmlns="http://opentosca.org/nodetypes/properties" xmlns:ty="http://opentosca.org/nodetypes">
+                        <DockerEngineURL>get_input: DockerEngineURL</DockerEngineURL>
+                        <DockerEngineCertificate/>
+                        <State>Running</State>
+			</ns11:DockerEngine_Properties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:RelationshipTemplate xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_17" type="ns1:HostedOn" id="con_17">
+                <tosca:SourceElement ref="MyTinyToDoDockerContainer"/>
+                <tosca:TargetElement ref="DockerEngine"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12"
+  targetNamespace="http://opentosca.org/policytemplates/annotations/tests"
+  id="winery-defs-for_tests1-TestShopWelcomePage">
+  <PolicyTemplate xmlns:annotations1="http://opentosca.org/policytypes/annotations/tests"
+    name="TestShopWelcomePage" type="annotations1:HttpTest" id="TestShopWelcomePage">
+    <Properties>
+      <properties
+        xmlns="http://opentosca.org/policytypes/annotations/propertiesdefinition/winery">
+        <TestMethod>GET</TestMethod>
+        <TestPath>/shop</TestPath>
+        <TestHeader/>
+        <TestBody/>
+        <ExpectedStatus>200</ExpectedStatus>
+        <ExpectedHeader/>
+        <ExpectedBody/>
+        <HostnamePropertyName>VMIP</HostnamePropertyName>
+        <Port>8080</Port>
+        <PortPropertyName/>
+      </properties>
+    </Properties>
+  </PolicyTemplate>
+</Definitions>

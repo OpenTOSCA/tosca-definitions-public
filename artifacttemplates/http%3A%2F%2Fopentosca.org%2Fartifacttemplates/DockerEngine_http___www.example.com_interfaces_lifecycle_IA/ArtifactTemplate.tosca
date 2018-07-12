@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/artifacttemplates" id="winery-defs-for_artifacttemplates-DockerEngine_http___www.example.com_interfaces_lifecycle_IA">
+    <ArtifactTemplate xmlns:artifacttypes="http://opentosca.org/artifacttypes" type="artifacttypes:WAR" id="DockerEngine_http___www.example.com_interfaces_lifecycle_IA">
+        <Properties>
+            <ot:WSProperties xmlns:ot="http://www.uni-stuttgart.de/opentosca" xmlns="http://www.uni-stuttgart.de/opentosca" xmlns:artifacttypes1="http://opentosca.org/artifacttypes" xmlns:extt2="http://www.example.com/ToscaTypes" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" xmlns:ns1="http://www.eclipse.org/winery/model/selfservice" xmlns:ns10="http://opentosca.org/artifacttypes" xmlns:ns11="http://www.example.com/ToscaTypes" xmlns:ns6="http://www.eclipse.org/winery/model/selfservice" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12">
+                <ServiceEndpoint>/services/org_opentosca_NodeTypes_DockerEngine__com_example_www_interfaces_lifecyclePort</ServiceEndpoint>
+                <PortType>{http://opentosca.org/nodetypes}org_opentosca_NodeTypes_DockerEngine__com_example_www_interfaces_lifecycle</PortType>
+                <InvocationType>SOAP/HTTP</InvocationType>
+            </ot:WSProperties>
+        </Properties>
+        <ArtifactReferences>
+            <ArtifactReference reference="artifacttemplates/http%253A%252F%252Fopentosca.org%252Fartifacttemplates/DockerEngine_http___www.example.com_interfaces_lifecycle_IA/files/org_opentosca_NodeTypes_DockerEngine__com_example_www_interfaces_lifecycle.war"/>
+            <ArtifactReference reference="artifacttemplates/http%253A%252F%252Fopentosca.org%252Fartifacttemplates/DockerEngine_http___www.example.com_interfaces_lifecycle_IA/files/org_opentosca_NodeTypes_DockerEngine__com_example_www_interfaces_lifecycle.zip"/>
+        </ArtifactReferences>
+    </ArtifactTemplate>
+</Definitions>

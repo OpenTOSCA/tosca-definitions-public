@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions targetNamespace="http://opentosca.org/policytypes" id="winery-defs-for_policytypes-PublicAccessPolicy" xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org">
+    <PolicyType name="PublicAccessPolicy" targetNamespace="http://opentosca.org/policytypes">
+        <winery:PropertiesDefinition elementname="properties" namespace="http://opentosca.org/policytypes/propertiesdefinition/winery">
+            <winery:properties>
+                <winery:key>SecurityGroup</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+        </winery:PropertiesDefinition>
+    </PolicyType>
+</Definitions>

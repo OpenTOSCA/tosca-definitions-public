@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/servicetemplates" id="winery-defs-for_servicetemplates1-SmartOrchestra_ServiceType3_OCBTinyTodo_Notification">
+    <ServiceTemplate name="MyTinyToDo_OpenStack_OCB_Notification" targetNamespace="http://opentosca.org/servicetemplates" id="SmartOrchestra_ServiceType3_OCBTinyTodo_Notification">
+        <TopologyTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="MyTinyToDoDockerContainer" type="nodetypes:MyTinyToDoDockerContainer" id="MyTinyToDoDockerContainer" winery:location="undefined" winery:x="853" winery:y="-1">
+                <Properties>
+                    <Properties xmlns="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ContainerPort>80</ContainerPort>
+                        <Port>80</Port>
+                        <SSHPort/>
+                        <ContainerID/>
+                        <ContainerIP/>
+			</Properties>
+                </Properties>
+                <DeploymentArtifacts>
+                    <DeploymentArtifact xmlns:artifacttypes="http://opentosca.org/artifacttypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="MyTinyToDo_DeplArtifact" artifactType="artifacttypes:DockerContainerArtifact" artifactRef="artifacttemplates:MyTinyToDo_DA"/>
+                </DeploymentArtifacts>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="DockerEngine" type="nodetypes:DockerEngine" id="DockerEngine" winery:location="undefined" winery:x="1295" winery:y="169">
+                <Properties>
+                    <DockerEngine_Properties xmlns="http://opentosca.org/nodetypes/properties" xmlns:ty="http://opentosca.org/nodetypes">
+                        <DockerEngineURL/>
+                        <DockerEngineCertificate/>
+			</DockerEngine_Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Ubuntu-14.04-VM" type="nodetypes:Ubuntu-14.04-VM" id="Ubuntu-14_04-VM" winery:location="undefined" winery:x="1246" winery:y="477">
+                <Properties>
+                    <VirtualMachineProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:VMIP/>
+                        <ty:VMInstanceID/>
+                        <ty:VMType>m1.medium</ty:VMType>
+                        <ty:VMUserName>ubuntu</ty:VMUserName>
+                        <ty:VMUserPassword>N/A</ty:VMUserPassword>
+                        <ty:VMPrivateKey>get_input: VMPrivateKey</ty:VMPrivateKey>
+                        <ty:VMPublicKey>N/A</ty:VMPublicKey>
+                        <ty:VMKeyPairName>get_input: VMKeyPairName</ty:VMKeyPairName>
+			</VirtualMachineProperties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="OpenStack-Liberty-12" type="nodetypes:OpenStack-Liberty-12" id="OpenStack-Liberty-12" winery:location="undefined" winery:x="964" winery:y="841">
+                <Properties>
+                    <CloudProviderProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:HypervisorEndpoint>cloud.flink-node.de</ty:HypervisorEndpoint>
+                        <ty:HypervisorTenantID>fiware</ty:HypervisorTenantID>
+                        <ty:HypervisorUserName>get_input: OpenStackUser</ty:HypervisorUserName>
+                        <ty:HypervisorUserPassword>get_input: OpenStackUserPassword</ty:HypervisorUserPassword>
+			</CloudProviderProperties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Python_2.7" type="nodetypes:Python_2.7" id="Python_2_7" winery:location="undefined" winery:x="466" winery:y="496"/>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="OCBTopic" type="nodetypes:OCBTopic" id="OCBTopic" winery:location="undefined" winery:x="149" winery:y="65">
+                <Properties>
+                    <properties xmlns="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns:ty="http://opentosca.org/nodetypes">
+                        <FIWARE-Service>get_input: TopicIN.FIWARE-Service</FIWARE-Service>
+                        <EntityID>get_input: TopicIN.EntityID</EntityID>
+                        <AttributeName>get_input: TopicIN.AttributeName</AttributeName>
+                        <Host>get_input: TopicIN.Host</Host>
+                        <Port>get_input: TopicIN.Port</Port>
+                        <DataType>Boolean</DataType>
+                        <Unit>ON/OFF</Unit>
+                        <Label>DataSource</Label>
+			</properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="OCB_TinyToDo_Notificator" type="nodetypes:OCB_TinyToDo_Notificator" id="OCB_TinyToDo_Notificator" winery:location="undefined" winery:x="504" winery:y="220">
+                <DeploymentArtifacts>
+                    <DeploymentArtifact xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="OCB2TinyTodo_Notificator_DA" artifactType="ToscaBaseTypes:ScriptArtifact" artifactRef="artifacttemplates:OCB2TinyTodo_Notificator_DA"/>
+                </DeploymentArtifacts>
+            </NodeTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_27" type="ToscaBaseTypes:HostedOn" id="con_27">
+                <SourceElement ref="Ubuntu-14_04-VM"/>
+                <TargetElement ref="OpenStack-Liberty-12"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_39" type="ToscaBaseTypes:HostedOn" id="con_39">
+                <SourceElement ref="DockerEngine"/>
+                <TargetElement ref="Ubuntu-14_04-VM"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_51" type="ToscaBaseTypes:HostedOn" id="con_51">
+                <SourceElement ref="MyTinyToDoDockerContainer"/>
+                <TargetElement ref="DockerEngine"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_50" type="ToscaBaseTypes:HostedOn" id="con_50">
+                <SourceElement ref="Python_2_7"/>
+                <TargetElement ref="Ubuntu-14_04-VM"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_66" type="ToscaBaseTypes:HostedOn" id="con_66">
+                <SourceElement ref="OCB_TinyToDo_Notificator"/>
+                <TargetElement ref="Ubuntu-14_04-VM"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_78" type="ToscaBaseTypes:DependsOn" id="con_78">
+                <SourceElement ref="OCB_TinyToDo_Notificator"/>
+                <TargetElement ref="Python_2_7"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_90" type="ToscaBaseTypes:ConnectsTo" id="con_90">
+                <Properties>
+                    <properties xmlns="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes/propertiesdefinition/winery" xmlns:ty="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                        <ChannelType>IN</ChannelType>
+			</properties>
+                </Properties>
+                <SourceElement ref="OCB_TinyToDo_Notificator"/>
+                <TargetElement ref="OCBTopic"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_102" type="ToscaBaseTypes:ConnectsTo" id="con_102">
+                <Properties>
+                    <properties xmlns="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes/propertiesdefinition/winery" xmlns:ty="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                        <ChannelType>OUT</ChannelType>
+			</properties>
+                </Properties>
+                <SourceElement ref="OCB_TinyToDo_Notificator"/>
+                <TargetElement ref="MyTinyToDoDockerContainer"/>
+            </RelationshipTemplate>
+        </TopologyTemplate>
+    </ServiceTemplate>
+</Definitions>

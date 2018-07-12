@@ -1,9 +1,6 @@
+# TOSCA Definitions Repository [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
-
-# TOSCA Definitions Repository
-
-This repository contains TOSCA Definitions (e.g., Node Types and Service Templates) prepared for being consumed by a TOSCA-compliant engine, such as the [OpenTOSCA Container](http://opentosca.github.io/container).
+> TOSCA Definitions (e.g., Node Types and Service Templates) prepared for being consumed by a TOSCA-compliant engine, such as the [OpenTOSCA Container](http://opentosca.github.io/container).
 
 ## Haftungsausschluss
 

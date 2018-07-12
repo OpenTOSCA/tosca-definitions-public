@@ -1,0 +1,18 @@
+{"SmartService": {
+    "ServiceClass": "1",
+    "DataProviders": [
+      {
+        "Name": "Messstation",
+        "DataChannels": [
+          {
+            "Name": "Tempsensor1",
+            "DataType": "Temperature",
+            "Unit": "Degr.Celsius",
+            "ResourceName": "temp",
+            "MetaData": "Temperatur im Hof"
+          }
+        ]
+      }
+    ]
+  }
+}

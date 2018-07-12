@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions id="winery-defs-for_ns3-RaspbianJessie_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
+    <tosca:NodeTypeImplementation name="RaspbianJessie_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" nodeType="ns4:RaspbianJessie" abstract="no" final="no" xmlns:ns4="http://opentosca.org/nodetypes">
+        <tosca:ImplementationArtifacts>
+            <tosca:ImplementationArtifact name="RaspbianJessieImpl_OperatingSystemIA" interfaceName="OperatingSystemInterface" artifactType="ns5:WAR" artifactRef="ns2:Ubuntu-14.04-VM_OperatingSystemInterface_IA" xmlns:ns5="http://opentosca.org/artifacttypes" xmlns:ns2="http://opentosca.org/artifacttemplates"/>
+        </tosca:ImplementationArtifacts>
+    </tosca:NodeTypeImplementation>
+</tosca:Definitions>

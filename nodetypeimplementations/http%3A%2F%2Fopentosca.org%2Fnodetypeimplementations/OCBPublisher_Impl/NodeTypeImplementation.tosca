@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/nodetypeimplementations" id="winery-defs-for_nodetypeimplementations-OCBPublisher_Impl">
+    <NodeTypeImplementation xmlns:nodetypes="http://opentosca.org/nodetypes" targetNamespace="http://opentosca.org/nodetypeimplementations" name="OCBPublisher_Impl" nodeType="nodetypes:OCBPublisher">
+        <ImplementationArtifacts>
+            <ImplementationArtifact xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="OCBPublisher_ConnectTo_IA" interfaceName="http://opentosca.org/interfaces/connections" operationName="connectTo" artifactType="ToscaBaseTypes:ScriptArtifact" artifactRef="artifacttemplates:TopicMapperApp_ConnectTo_IA"/>
+            <ImplementationArtifact xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="OCBPublisher_Start_IA" interfaceName="http://opentosca.org/interfaces/lifecycle" operationName="start" artifactType="ToscaBaseTypes:ScriptArtifact" artifactRef="artifacttemplates:PyhtonApp_2.7_Impl_StartIA"/>
+            <ImplementationArtifact xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="OCBPublisher_Stop_IA" interfaceName="http://opentosca.org/interfaces/lifecycle" operationName="stop" artifactType="ToscaBaseTypes:ScriptArtifact" artifactRef="artifacttemplates:OCBPublisher_Stop_IA"/>
+        </ImplementationArtifacts>
+    </NodeTypeImplementation>
+</Definitions>

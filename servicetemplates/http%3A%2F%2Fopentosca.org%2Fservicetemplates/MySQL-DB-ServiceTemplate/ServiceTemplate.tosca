@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns2="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns8-MySQL-DB-ServiceTemplate" targetNamespace="http://opentosca.org/servicetemplates">
+    <tosca:ServiceTemplate name="MySQL-DB-ServiceTemplate" targetNamespace="http://opentosca.org/servicetemplates" id="MySQL-DB-ServiceTemplate">
+        <tosca:BoundaryDefinitions>
+            <tosca:Properties>
+                <ns4:SmartService xmlns:ns4="http://www.eclipse.org/winery/model/selfservice">
+                    <smartServiceType>VMProviderService</smartServiceType>
+                    <VMIP/>
+                </ns4:SmartService>
+                <tosca:PropertyMappings>
+                    <tosca:PropertyMapping serviceTemplatePropertyRef="/*[local-name()='SmartService']/*[local-name()='VMIP']" targetObjectRef="ubuntuVM" targetPropertyRef="/*[local-name()='VirtualMachineProperties']/*[local-name()='VMIP']"/>
+                </tosca:PropertyMappings>
+            </tosca:Properties>
+        </tosca:BoundaryDefinitions>
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate xmlns:ns4="http://opentosca.org/nodetypes" name="OpenStack-Liberty-12" type="ns4:OpenStack-Liberty-12" id="openstackCloudProvider" winery:x="296" winery:y="600">
+                <tosca:Properties>
+                    <ns4:CloudProviderProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:HypervisorEndpoint>asflexsm.informatik.uni-stuttgart.de</ty:HypervisorEndpoint>
+                        <ty:HypervisorTenantID>SmartServices</ty:HypervisorTenantID>
+                        <ty:HypervisorUserName>get_input: OpenStackUser</ty:HypervisorUserName>
+                        <ty:HypervisorUserPassword>get_input: OpenStackUserPassword</ty:HypervisorUserPassword>
+			</ns4:CloudProviderProperties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns4="http://opentosca.org/nodetypes" name="Ubuntu-14.04-VM" type="ns4:Ubuntu-14.04-VM" id="ubuntuVM" winery:x="296" winery:y="425">
+                <tosca:Properties>
+                    <ns4:VirtualMachineProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:VMIP/>
+                        <ty:VMInstanceID/>
+                        <ty:VMType>m1.small</ty:VMType>
+                        <ty:VMUserName>ubuntu</ty:VMUserName>
+                        <ty:VMUserPassword>N/A</ty:VMUserPassword>
+                        <ty:VMPrivateKey>get_input: VMPrivateKey</ty:VMPrivateKey>
+                        <ty:VMPublicKey>N/A</ty:VMPublicKey>
+                        <ty:VMKeyPairName>get_input: VMKeyPairName</ty:VMKeyPairName>
+			</ns4:VirtualMachineProperties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns4="http://opentosca.org/nodetypes" name="MySQL-DBMS-5.5" type="ns4:MySQL-DBMS-5.5" id="mySqlDBMS" winery:x="296" winery:y="249">
+                <tosca:Properties>
+                    <ns4:MySQLDBMSProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:DBMSUser>get_input: DBMSUser</ty:DBMSUser>
+                        <ty:DBMSPassword>get_input: DBMSPassword</ty:DBMSPassword>
+                        <ty:DBMSPort>3003</ty:DBMSPort>
+			</ns4:MySQLDBMSProperties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns4="http://opentosca.org/nodetypes" name="MySQL-DB" type="ns4:MySQL-DB" id="mySQLDb" winery:x="296" winery:y="75">
+                <tosca:Properties>
+                    <ns4:MySQLDBProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:DBName>OpenTOSCATestDatabase</ty:DBName>
+                        <ty:DBUser>openTOSCADBUser</ty:DBUser>
+                        <ty:DBPassword>openTOSCADBPassword</ty:DBPassword>
+			</ns4:MySQLDBProperties>
+                </tosca:Properties>
+                <tosca:DeploymentArtifacts>
+                    <tosca:DeploymentArtifact xmlns:ns9="http://opentosca.org/artifacttypes" xmlns:ns0="http://opentosca.org/artifacttemplates" name="MySQL-DB-OpenTOSCADB-SQL-DA" artifactType="ns9:SQLArtifact" artifactRef="ns0:MySQL-DB-OpenTOSCADB-SQL-ArtifactTemplate"/>
+                </tosca:DeploymentArtifacts>
+            </tosca:NodeTemplate>
+            <tosca:RelationshipTemplate xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_11" type="ns1:HostedOn" id="con_11">
+                <tosca:SourceElement ref="mySQLDb"/>
+                <tosca:TargetElement ref="mySqlDBMS"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_23" type="ns1:HostedOn" id="con_23">
+                <tosca:SourceElement ref="mySqlDBMS"/>
+                <tosca:TargetElement ref="ubuntuVM"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_35" type="ns1:HostedOn" id="con_35">
+                <tosca:SourceElement ref="ubuntuVM"/>
+                <tosca:TargetElement ref="openstackCloudProvider"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

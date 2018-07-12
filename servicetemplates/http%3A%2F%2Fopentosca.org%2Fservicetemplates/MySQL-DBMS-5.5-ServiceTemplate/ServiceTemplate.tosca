@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/servicetemplates" id="winery-defs-for_ns8-MySQL-DBMS-5.5-ServiceTemplate">
+    <ServiceTemplate name="MySQL-DBMS-5.5-ServiceTemplate" targetNamespace="http://opentosca.org/servicetemplates" id="MySQL-DBMS-5.5-ServiceTemplate">
+        <TopologyTemplate>
+            <NodeTemplate xmlns:ns5="http://opentosca.org/nodetypes" name="OpenStack-Liberty-12" minInstances="1" maxInstances="1" type="ns5:OpenStack-Liberty-12" id="OpenStack-Liberty-12" winery:x="296" winery:y="425">
+                <Properties>
+                    <ns1:CloudProviderProperties xmlns:ns1="http://opentosca.org/nodetypes" xmlns="http://opentosca.org/nodetypes" xmlns:ns3="http://opentosca.org/nodetypes" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:HypervisorEndpoint>asflexsm.informatik.uni-stuttgart.de</ty:HypervisorEndpoint>
+                        <ty:HypervisorTenantID>SmartServices</ty:HypervisorTenantID>
+                        <ty:HypervisorUserName>get_input: OpenStackUser</ty:HypervisorUserName>
+                        <ty:HypervisorUserPassword>get_input: OpenStackUserPassword</ty:HypervisorUserPassword>
+			</ns1:CloudProviderProperties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:ns5="http://opentosca.org/nodetypes" name="Ubuntu-14.04-VM" minInstances="1" maxInstances="1" type="ns5:Ubuntu-14.04-VM" id="Ubuntu-14_04-VM" winery:x="296" winery:y="250">
+                <Properties>
+                    <ns1:VirtualMachineProperties xmlns:ns1="http://opentosca.org/nodetypes" xmlns="http://opentosca.org/nodetypes" xmlns:ns3="http://opentosca.org/nodetypes" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:VMIP/>
+                        <ty:VMInstanceID/>
+                        <ty:VMType>m1.small</ty:VMType>
+                        <ty:VMUserName>ubuntu</ty:VMUserName>
+                        <ty:VMUserPassword>N/A</ty:VMUserPassword>
+                        <ty:VMPrivateKey>get_input: VMPrivateKey</ty:VMPrivateKey>
+                        <ty:VMPublicKey>N/A</ty:VMPublicKey>
+                        <ty:VMKeyPairName>get_input: VMKeyPairName</ty:VMKeyPairName>
+			</ns1:VirtualMachineProperties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:ns5="http://opentosca.org/nodetypes" name="MySQL-DBMS-5.5" minInstances="1" maxInstances="1" type="ns5:MySQL-DBMS-5.5" id="MySQL-DBMS-5_5" winery:x="296" winery:y="75">
+                <Properties>
+                    <ns1:MySQLDBMSProperties xmlns:ns1="http://opentosca.org/nodetypes" xmlns="http://opentosca.org/nodetypes" xmlns:ns3="http://opentosca.org/nodetypes" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:DBMSUser>get_input: DBMSUser</ty:DBMSUser>
+                        <ty:DBMSPassword>get_input: DBMSPassword</ty:DBMSPassword>
+                        <ty:DBMSPort>get_input: DBMSPort</ty:DBMSPort>
+			</ns1:MySQLDBMSProperties>
+                </Properties>
+            </NodeTemplate>
+            <RelationshipTemplate xmlns:ns5="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_12" type="ns5:HostedOn" id="con_12">
+                <SourceElement ref="MySQL-DBMS-5_5"/>
+                <TargetElement ref="Ubuntu-14_04-VM"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ns5="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_24" type="ns5:HostedOn" id="con_24">
+                <SourceElement ref="Ubuntu-14_04-VM"/>
+                <TargetElement ref="OpenStack-Liberty-12"/>
+            </RelationshipTemplate>
+        </TopologyTemplate>
+    </ServiceTemplate>
+</Definitions>

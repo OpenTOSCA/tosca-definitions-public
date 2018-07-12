@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns6="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns10-FIWARE_Orion_Bare_Docker" targetNamespace="http://opentosca.org/servicetemplates">
+    <tosca:ServiceTemplate name="FIWARE_Orion_Bare_Docker" targetNamespace="http://opentosca.org/servicetemplates" id="FIWARE_Orion_Bare_Docker">
+        <tosca:BoundaryDefinitions>
+            <tosca:Properties>
+                <ns2:selfserviceApplicationUrl xmlns:ns2="http://www.eclipse.org/winery/model/selfservice"/>
+                <tosca:PropertyMappings>
+                    <tosca:PropertyMapping serviceTemplatePropertyRef="/*[local-name()='selfserviceApplicationUrl']" targetObjectRef="FIWARE-Orion-DockerContainer" targetPropertyRef="concat('http://', FIWARE-Orion-DockerContainer.Properties.ContainerIP, ':', FIWARE-Orion-DockerContainer.Properties.Port)"/>
+                </tosca:PropertyMappings>
+            </tosca:Properties>
+        </tosca:BoundaryDefinitions>
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate xmlns:ns0="http://opentosca.org/nodetypes" name="FIWARE-Orion-DockerContainer" type="ns0:FIWARE-Orion-DockerContainer" id="FIWARE-Orion-DockerContainer" winery:location="undefined" winery:x="349" winery:y="56">
+                <tosca:Properties>
+                    <ns2:Properties xmlns:ns2="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ContainerPort>1026</ContainerPort>
+                        <Port>get_input: ApplicationPort</Port>
+                        <SSHPort/>
+			</ns2:Properties>
+                </tosca:Properties>
+                <tosca:DeploymentArtifacts>
+                    <tosca:DeploymentArtifact xmlns:ns3="http://opentosca.org/artifacttypes" xmlns:ns4="http://opentosca.org/artifacttemplates" name="Orion_DA" artifactType="ns3:DockerContainerArtifact" artifactRef="ns4:FIWARE-Orion_Docker_DA"/>
+                </tosca:DeploymentArtifacts>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns0="http://opentosca.org/nodetypes" name="DockerEngine" type="ns0:DockerEngine" id="DockerEngine" winery:location="undefined" winery:x="356" winery:y="297">
+                <tosca:Properties>
+                    <ns1:DockerEngine_Properties xmlns:ns1="http://opentosca.org/nodetypes/properties" xmlns="http://opentosca.org/nodetypes/properties" xmlns:ty="http://opentosca.org/nodetypes">
+                        <DockerEngineURL>get_input: DockerEngineURL</DockerEngineURL>
+                        <DockerEngineCertificate/>
+			</ns1:DockerEngine_Properties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:RelationshipTemplate xmlns:ns5="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_13" type="ns5:HostedOn" id="con_13">
+                <tosca:SourceElement ref="FIWARE-Orion-DockerContainer"/>
+                <tosca:TargetElement ref="DockerEngine"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

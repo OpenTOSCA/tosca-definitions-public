@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/servicetemplates" id="winery-defs-for_ns12-HomeAssistant_MQTT_Composition">
+    <ServiceTemplate name="HomeAssistant_MQTT_Composition" targetNamespace="http://opentosca.org/servicetemplates" id="HomeAssistant_MQTT_Composition">
+        <BoundaryDefinitions>
+            <Properties>
+                <ns6:SmartService xmlns:ns6="http://www.smartorchestra.org/tosca/extensions/2017">
+                    <ns7:smartServiceType xmlns:ns7="http://www.smartorchestra.org/tosca/extensions/2017">SensorDataProviderService</ns7:smartServiceType>
+                    <ns7:sensorDataType xmlns:ns7="http://www.smartorchestra.org/tosca/extensions/2017" xmlns:standardizedSensorDataTypes="stdTypes">standardizedSensorDataTypes:Temperature</ns7:sensorDataType>
+                    <ns7:sensorDataValueType xmlns:ns7="http://www.smartorchestra.org/tosca/extensions/2017" xmlns:standardizedSensorDataValueTypes="stdValueTypes">standardizedSensorDataValueTypes:Celsius</ns7:sensorDataValueType>
+                    <ns7:geoCoordinates xmlns:ns7="http://www.smartorchestra.org/tosca/extensions/2017">(48,84)</ns7:geoCoordinates>
+                    <ns7:geoRadius xmlns:ns7="http://www.smartorchestra.org/tosca/extensions/2017">4000m</ns7:geoRadius>
+                    <ns7:MQTTBrokerEndpoint xmlns:ns7="http://www.smartorchestra.org/tosca/extensions/2017"/>
+                    <ns7:MQTTTopicNameTemperature xmlns:ns7="http://www.smartorchestra.org/tosca/extensions/2017"/>
+                    <ns7:MQTTTopicNamePressure xmlns:ns7="http://www.smartorchestra.org/tosca/extensions/2017"/>
+                    <ns7:MQTTTopicNameHumidity xmlns:ns7="http://www.smartorchestra.org/tosca/extensions/2017"/>
+                    <ns7:selfserviceApplicationUrl xmlns:ns7="http://www.smartorchestra.org/tosca/extensions/2017" xmlns:ns8="http://www.eclipse.org/winery/model/selfservice"/>
+				</ns6:SmartService>
+                <PropertyMappings>
+                    <PropertyMapping serviceTemplatePropertyRef="/*[local-name()='SmartService']/*[local-name()='MQTTTopicNameTemperature']" targetObjectRef="SensorTopic" targetPropertyRef="/*[local-name()='TopicProperties']/*[local-name()='Name']"/>
+                    <PropertyMapping serviceTemplatePropertyRef="/*[local-name()='SmartService']/*[local-name()='MQTTTopicNamePressure']" targetObjectRef="SensorTopic_2" targetPropertyRef="/*[local-name()='TopicProperties']/*[local-name()='Name']"/>
+                    <PropertyMapping serviceTemplatePropertyRef="/*[local-name()='SmartService']/*[local-name()='MQTTTopicNameHumidity']" targetObjectRef="SensorTopic_3" targetPropertyRef="/*[local-name()='TopicProperties']/*[local-name()='Name']"/>
+                    <PropertyMapping serviceTemplatePropertyRef="/*[local-name()='SmartService']/*[local-name()='MQTTBrokerEndpoint']" targetObjectRef="Ubuntu-14_04-VM" targetPropertyRef="/*[local-name()='VirtualMachineProperties']/*[local-name()='VMIP']"/>
+                    <PropertyMapping serviceTemplatePropertyRef="/*[local-name()='SmartService']/*[local-name()='selfserviceApplicationUrl']" targetObjectRef="Ubuntu-14_04-VM" targetPropertyRef="concat('http://', Ubuntu-14_04-VM.Properties.VMIP, ':8123')"/>
+                </PropertyMappings>
+            </Properties>
+        </BoundaryDefinitions>
+        <TopologyTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Python_3" minInstances="1" maxInstances="1" type="nodetypes:Python_3" id="Python_3" winery:x="128" winery:y="282"/>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="HomeAssistant" minInstances="1" maxInstances="1" type="nodetypes:HomeAssistant" id="HomeAssistant" winery:x="320" winery:y="64"/>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Endpoint" minInstances="1" maxInstances="1" type="nodetypes:Endpoint" id="Endpoint" winery:location="undefined" winery:x="647" winery:y="655.5">
+                <Properties>
+                    <Properties xmlns="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns:ty="http://opentosca.org/nodetypes">
+                        <IP>get_input: MQTTBrokerEndpoint</IP>
+					</Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="OpenStack-Liberty-12" minInstances="1" maxInstances="1" type="nodetypes:OpenStack-Liberty-12" id="OpenStack-Liberty-12" winery:location="undefined" winery:x="310" winery:y="655.5">
+                <Properties>
+                    <CloudProviderProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:HypervisorEndpoint>asflexsm.informatik.uni-stuttgart.de</ty:HypervisorEndpoint>
+                        <ty:HypervisorTenantID>SmartServices</ty:HypervisorTenantID>
+                        <ty:HypervisorUserName>get_input: OpenStackUser</ty:HypervisorUserName>
+                        <ty:HypervisorUserPassword>get_input: OpenStackUserPassword</ty:HypervisorUserPassword>
+					</CloudProviderProperties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Ubuntu-14.04-VM" minInstances="1" maxInstances="1" type="nodetypes:Ubuntu-14.04-VM" id="Ubuntu-14_04-VM" winery:location="undefined" winery:x="311" winery:y="471">
+                <Properties>
+                    <VirtualMachineProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:VMIP/>
+                        <ty:VMInstanceID/>
+                        <ty:VMType>m1.small</ty:VMType>
+                        <ty:VMUserName>ubuntu</ty:VMUserName>
+                        <ty:VMUserPassword>N/A</ty:VMUserPassword>
+                        <ty:VMPrivateKey>get_input: VMPrivateKey</ty:VMPrivateKey>
+                        <ty:VMPublicKey>N/A</ty:VMPublicKey>
+                        <ty:VMKeyPairName>get_input: VMKeyPairName</ty:VMKeyPairName>
+					</VirtualMachineProperties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Mosquitto_3.1" minInstances="1" maxInstances="1" type="nodetypes:Mosquitto_3.1" id="Mosquitto_3_1" winery:location="undefined" winery:x="647" winery:y="471"/>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="TempTopic" minInstances="1" maxInstances="1" type="nodetypes:SensorTopic" id="SensorTopic" winery:location="undefined" winery:x="555" winery:y="155">
+                <Properties>
+                    <properties xmlns="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns:ty="http://opentosca.org/nodetypes">
+                        <Name>get_input: MQTTTopicNameTemperature</Name>
+                        <Protocol>MQTT</Protocol>
+                        <ValuePath>value</ValuePath>
+                        <SensorType>temperature</SensorType>
+                        <DataType>float</DataType>
+					</properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="PressureTopic" minInstances="1" maxInstances="1" type="nodetypes:SensorTopic" id="SensorTopic_2" winery:location="undefined" winery:x="775" winery:y="252">
+                <Properties>
+                    <properties xmlns="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns:ty="http://opentosca.org/nodetypes">
+                        <Name>get_input: MQTTTopicNamePressure</Name>
+                        <Protocol>MQTT</Protocol>
+                        <ValuePath>value</ValuePath>
+                        <SensorType>pressure</SensorType>
+                        <DataType>float</DataType>
+					</properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="HumidityTopic" minInstances="1" maxInstances="1" type="nodetypes:SensorTopic" id="SensorTopic_3" winery:location="undefined" winery:x="929" winery:y="379">
+                <Properties>
+                    <properties xmlns="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns:ty="http://opentosca.org/nodetypes">
+                        <Name>get_input: MQTTTopicNameHumidity</Name>
+                        <Protocol>MQTT</Protocol>
+                        <ValuePath>value</ValuePath>
+                        <SensorType>humidity</SensorType>
+                        <DataType>integer</DataType>
+					</properties>
+                </Properties>
+            </NodeTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_130" type="ToscaBaseTypes:DependsOn" id="con_130">
+                <SourceElement ref="HomeAssistant"/>
+                <TargetElement ref="Python_3"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_97" type="ToscaBaseTypes:HostedOn" id="con_97">
+                <SourceElement ref="Ubuntu-14_04-VM"/>
+                <TargetElement ref="OpenStack-Liberty-12"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_109" type="ToscaBaseTypes:HostedOn" id="con_109">
+                <SourceElement ref="HomeAssistant"/>
+                <TargetElement ref="Ubuntu-14_04-VM"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_121" type="ToscaBaseTypes:HostedOn" id="con_121">
+                <SourceElement ref="Python_3"/>
+                <TargetElement ref="Ubuntu-14_04-VM"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_58" type="ToscaBaseTypes:ConnectsTo" id="con_58">
+                <Properties>
+                    <properties xmlns="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes/propertiesdefinition/winery" xmlns:ty="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                        <ChannelType/>
+					</properties>
+                </Properties>
+                <SourceElement ref="HomeAssistant"/>
+                <TargetElement ref="SensorTopic"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_72" type="ToscaBaseTypes:ConnectsTo" id="con_72">
+                <Properties>
+                    <properties xmlns="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes/propertiesdefinition/winery" xmlns:ty="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                        <ChannelType/>
+					</properties>
+                </Properties>
+                <SourceElement ref="HomeAssistant"/>
+                <TargetElement ref="SensorTopic_2"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_84" type="ToscaBaseTypes:ConnectsTo" id="con_84">
+                <Properties>
+                    <properties xmlns="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes/propertiesdefinition/winery" xmlns:ty="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                        <ChannelType/>
+					</properties>
+                </Properties>
+                <SourceElement ref="HomeAssistant"/>
+                <TargetElement ref="SensorTopic_3"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_96" type="ToscaBaseTypes:HostedOn" id="con_96">
+                <SourceElement ref="SensorTopic"/>
+                <TargetElement ref="Mosquitto_3_1"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_108" type="ToscaBaseTypes:HostedOn" id="con_108">
+                <SourceElement ref="SensorTopic_2"/>
+                <TargetElement ref="Mosquitto_3_1"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_120" type="ToscaBaseTypes:HostedOn" id="con_120">
+                <SourceElement ref="SensorTopic_3"/>
+                <TargetElement ref="Mosquitto_3_1"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_132" type="ToscaBaseTypes:HostedOn" id="con_132">
+                <SourceElement ref="Mosquitto_3_1"/>
+                <TargetElement ref="Endpoint"/>
+            </RelationshipTemplate>
+        </TopologyTemplate>
+    </ServiceTemplate>
+</Definitions>
