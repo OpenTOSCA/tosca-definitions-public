@@ -1,0 +1,8 @@
+version: 2
+jobs:
+   build:
+     docker:
+       - image: opentosca/winery-cli:latest
+     steps:
+       - checkout
+       - run: winery -cd --path .
