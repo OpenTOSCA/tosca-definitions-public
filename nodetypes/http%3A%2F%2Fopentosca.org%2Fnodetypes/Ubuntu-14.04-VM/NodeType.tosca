@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<tosca:Definitions id="winery-defs-for_ns3-Ubuntu-14.04-VM" targetNamespace="http://opentosca.org/nodetypes" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
-    <tosca:NodeType name="Ubuntu-14.04-VM" abstract="no" final="no" targetNamespace="http://opentosca.org/nodetypes" winery:bordercolor="#4aff9b" xmlns="http://docs.oasis-open.org/tosca/ns/2011/12">
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/nodetypes" id="winery-defs-for_ns3-Ubuntu-14.04-VM">
+    <NodeType name="Ubuntu-14.04-VM" abstract="no" final="no" targetNamespace="http://opentosca.org/nodetypes" winery:bordercolor="#4aff9b">
         <winery:PropertiesDefinition elementname="VirtualMachineProperties" namespace="http://opentosca.org/nodetypes">
             <winery:properties>
                 <winery:key>VMIP</winery:key>
@@ -35,8 +35,9 @@
                 <winery:type>xsd:string</winery:type>
             </winery:properties>
         </winery:PropertiesDefinition>
+        <DerivedFrom xmlns:otntyIgeneral="http://opentosca.org/nodetypes" typeRef="otntyIgeneral:VM_w1-wip1"/>
         <RequirementDefinitions>
-            <RequirementDefinition xmlns:requirementtypes="http://opentosca.org/requirementtypes" name="ReqCanHostUbuntuVM" requirementType="requirementtypes:ReqCanHostUbuntuVM" lowerBound="1" upperBound="unbounded"/>
+            <RequirementDefinition xmlns:otrtyIgeneral="http://opentosca.org/requirementtypes" name="ReqCanHostUbuntuVM" requirementType="otrtyIgeneral:ReqCanHostUbuntuVM" lowerBound="1" upperBound="unbounded"/>
         </RequirementDefinitions>
         <Interfaces>
             <Interface name="OperatingSystemInterface">
@@ -96,5 +97,5 @@
                 </Operation>
             </Interface>
         </Interfaces>
-    </tosca:NodeType>
-</tosca:Definitions>
+    </NodeType>
+</Definitions>

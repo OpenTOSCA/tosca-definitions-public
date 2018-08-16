@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://www.example.org/tosca/servicetemplates" id="winery-defs-for_steIgeneral-TestVSphere_1-w1-wip1">
+    <ServiceTemplate name="TestVSphere_1-w1-wip1" targetNamespace="http://www.example.org/tosca/servicetemplates" id="TestVSphere_1-w1-wip1">
+        <TopologyTemplate>
+            <NodeTemplate xmlns:otntyIgeneral="http://opentosca.org/nodetypes" name="VSphere_5.5" minInstances="1" maxInstances="1" type="otntyIgeneral:VSphere_5.5" id="VSphere_5.5" winery:x="520" winery:y="464">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <HypervisorEndpoint>https://iaasvc.informatik.uni-stuttgart.de/sdk</HypervisorEndpoint>
+                        <HypervisorTenantID>IAAS-Studenten</HypervisorTenantID>
+                        <HypervisorUserName>get_input: VSphereUserName</HypervisorUserName>
+                        <HypervisorUserPassword>get_input: VSphereUserPassword</HypervisorUserPassword>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:otntyIgeneral="http://opentosca.org/nodetypes" name="VSphere_5.5" minInstances="1" maxInstances="1" type="otntyIgeneral:VSphere_5.5" id="VSphere_5.5_2" winery:x="807" winery:y="458">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <HypervisorEndpoint>https://iaasvc.informatik.uni-stuttgart.de/sdk</HypervisorEndpoint>
+                        <HypervisorTenantID>IAAS-Studenten</HypervisorTenantID>
+                        <HypervisorUserName>get_input: VSphereUserName</HypervisorUserName>
+                        <HypervisorUserPassword>get_input: VSphereUserPassword</HypervisorUserPassword>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:otntyIgeneral="http://opentosca.org/nodetypes" name="Ubuntu-14.04-VM" minInstances="1" maxInstances="1" type="otntyIgeneral:Ubuntu-14.04-VM" id="Ubuntu-14.04-VM" winery:x="520" winery:y="315">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <VMIP/>
+                        <VMInstanceID/>
+                        <VMType>ubuntu-base-template</VMType>
+                        <VMUserName/>
+                        <VMUserPassword/>
+                        <VMPrivateKey>-----BEGIN RSA PRIVATE KEY-----
+MIIEoQIBAAKCAQEApHc2+O+RlXTkUoIZsoO9M73+O7LSGRNPviK57Fr11dI08y/D
+OnJesALm1wQoQQ476RpMS8Vu/RQ9/hHRSNnjOrxLfmrlzd5Gn7Lh9sBN9Z53um4P
+l/selJDj6Q19H8ui43W/qkfsQDJ5FehYSbMklfvOhkJg5SHn1d/8Z/sSi1AiaGoJ
+QVdftJ7oI6dNoU0M+CXHWwshEpUHLRosY55GecgU0gNwXEG9cf9UId7YqYIgh8Qh
+B6eQqufO+QrsP6Q4J/GXh1gzRVC//v4qt+f+V0RXqZmJSy/+L24pUsys8yTond+D
+5Bs1Is0E1W42gCXuipPNWwkS0bDAU+JPIr77BwIBJQKCAQAfHXkaVtZai7x+T/cG
+GOxxkqW4RGzv/LwPNwCUf+lR91YgK6F5wpxK0B3Vptcu5wRqXuvW+9a6QhmQ7p03
+S9ELHLRWL+ZJiurERG/waZI1Yytoda/sUhqKz022eCxtzJRwON8SYKJRVag0k72t
+FA3XL6Oc3CArWXEMyYLHkF10TR8hRWvt55BoDFEFkIu7TKv+AYh8oh6mIFMCJYG3
+26eOaHHhMNvAPnQm2hUf4Im2g/Pm2ZwgRKzUHFd5lZg8okAQSlDf4ZN2mTZph9yq
+1GqThG7P8HJ+eze8elo+Q0sTuRtyPCUu7BXS+XwjZ4XjIESm1JMUBHv/Qx5YCquy
+d951AoGBAPoRgoB4nlPelRjlnsoexqdcHwz7YIbiB5bBFxw+lPLkPQm9K67R83R/
+Sdz+zcJW+llmZqNgA9IE5LH83ZOG/7vsQ2Z4uYI7X6wOmpP4rh3y6bgNi285nhfD
+vp6SxLt/bgUgSE/WAvYNjn0nfHOhKCyQDXVnEal/OHB4AXTQI33DAoGBAKhd5k5M
+8RCLf5Cy5+oSOkY42g2Dv2XnBydgqocQEpTJYvpJ+hNtlnVJ65nDt2L7hSumTPtG
+OL9pbU6eFqHBSuB33DxvP4EExz15cOPKjfY0DFXjO7zivXasBEAJNokwCQlGWUrx
+gYKVhYnOPEhTCg32a+DTTWwxzGZTqHNaIeVtAoGBAOyNGpUz1Aolk/T04lB9+i+c
+VLlA0O5LbvZjoD1P9K5pMtHcdW4E32Bcu34FyY5SRsNFMKhhvmy4hU5rvNepNxmM
+dxu+Tp3Jdi0ikjjyKCoq+MLcYU2Jh7WdfPbd3LFc3bHSbeqn2UmeHwDEfKS7ClOq
+3Ex2QSPLXubuDzclwLU7AoGAZBwoEuGkF6zkENkURf0ADhP3Rk5WIOo7mt+H/UfT
+smnn0xc6v3GXu1xiksdmHy3EzdiAzMH4OnYJpF3/nnLuQEdErk/8PuA/HaIncq/K
+CANFmtojhREyYjzEQcBJ8LTHGkWBM3rXYma+GpZNW2+lHQ8PthzGQFT2E1RWUmzx
+j1UCgYBzpb9UwLThvd89okbI4ghANH/1S8InClgcOKNpksi62G4wqosExUBFmWI1
+HQ5Fmsx26MtEqhQQXm4Za6Dyisyth1/SwHUXDTmpb4kaWQpE34xkoH7OmeiUc1df
+xA0acNks2JHTfE4ofu5r+8eUIKGTKUBmmVq71q/ALinINYiNgA==
+-----END RSA PRIVATE KEY-----
+</VMPrivateKey>
+                        <VMPublicKey>ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEApHc2+O+RlXTkUoIZsoO9M73+O7LSGRNPviK57Fr11dI08y/DOnJesALm1wQoQQ476RpMS8Vu/RQ9/hHRSNnjOrxLfmrlzd5Gn7Lh9sBN9Z53um4Pl/selJDj6Q19H8ui43W/qkfsQDJ5FehYSbMklfvOhkJg5SHn1d/8Z/sSi1AiaGoJQVdftJ7oI6dNoU0M+CXHWwshEpUHLRosY55GecgU0gNwXEG9cf9UId7YqYIgh8QhB6eQqufO+QrsP6Q4J/GXh1gzRVC//v4qt+f+V0RXqZmJSy/+L24pUsys8yTond+D5Bs1Is0E1W42gCXuipPNWwkS0bDAU+JPIr77Bw== rsa-key-20180709</VMPublicKey>
+                        <VMKeyPairName>testkey</VMKeyPairName>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:otntyIgeneral="http://opentosca.org/nodetypes" name="Ubuntu-14.04-VM" minInstances="1" maxInstances="1" type="otntyIgeneral:Ubuntu-14.04-VM" id="Ubuntu-14.04-VM_2" winery:x="802" winery:y="315">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <VMIP/>
+                        <VMInstanceID/>
+                        <VMType>ubuntu-base-template</VMType>
+                        <VMUserName>ubuntu</VMUserName>
+                        <VMUserPassword/>
+                        <VMPrivateKey>-----BEGIN RSA PRIVATE KEY-----
+MIIEoQIBAAKCAQEApHc2+O+RlXTkUoIZsoO9M73+O7LSGRNPviK57Fr11dI08y/D
+OnJesALm1wQoQQ476RpMS8Vu/RQ9/hHRSNnjOrxLfmrlzd5Gn7Lh9sBN9Z53um4P
+l/selJDj6Q19H8ui43W/qkfsQDJ5FehYSbMklfvOhkJg5SHn1d/8Z/sSi1AiaGoJ
+QVdftJ7oI6dNoU0M+CXHWwshEpUHLRosY55GecgU0gNwXEG9cf9UId7YqYIgh8Qh
+B6eQqufO+QrsP6Q4J/GXh1gzRVC//v4qt+f+V0RXqZmJSy/+L24pUsys8yTond+D
+5Bs1Is0E1W42gCXuipPNWwkS0bDAU+JPIr77BwIBJQKCAQAfHXkaVtZai7x+T/cG
+GOxxkqW4RGzv/LwPNwCUf+lR91YgK6F5wpxK0B3Vptcu5wRqXuvW+9a6QhmQ7p03
+S9ELHLRWL+ZJiurERG/waZI1Yytoda/sUhqKz022eCxtzJRwON8SYKJRVag0k72t
+FA3XL6Oc3CArWXEMyYLHkF10TR8hRWvt55BoDFEFkIu7TKv+AYh8oh6mIFMCJYG3
+26eOaHHhMNvAPnQm2hUf4Im2g/Pm2ZwgRKzUHFd5lZg8okAQSlDf4ZN2mTZph9yq
+1GqThG7P8HJ+eze8elo+Q0sTuRtyPCUu7BXS+XwjZ4XjIESm1JMUBHv/Qx5YCquy
+d951AoGBAPoRgoB4nlPelRjlnsoexqdcHwz7YIbiB5bBFxw+lPLkPQm9K67R83R/
+Sdz+zcJW+llmZqNgA9IE5LH83ZOG/7vsQ2Z4uYI7X6wOmpP4rh3y6bgNi285nhfD
+vp6SxLt/bgUgSE/WAvYNjn0nfHOhKCyQDXVnEal/OHB4AXTQI33DAoGBAKhd5k5M
+8RCLf5Cy5+oSOkY42g2Dv2XnBydgqocQEpTJYvpJ+hNtlnVJ65nDt2L7hSumTPtG
+OL9pbU6eFqHBSuB33DxvP4EExz15cOPKjfY0DFXjO7zivXasBEAJNokwCQlGWUrx
+gYKVhYnOPEhTCg32a+DTTWwxzGZTqHNaIeVtAoGBAOyNGpUz1Aolk/T04lB9+i+c
+VLlA0O5LbvZjoD1P9K5pMtHcdW4E32Bcu34FyY5SRsNFMKhhvmy4hU5rvNepNxmM
+dxu+Tp3Jdi0ikjjyKCoq+MLcYU2Jh7WdfPbd3LFc3bHSbeqn2UmeHwDEfKS7ClOq
+3Ex2QSPLXubuDzclwLU7AoGAZBwoEuGkF6zkENkURf0ADhP3Rk5WIOo7mt+H/UfT
+smnn0xc6v3GXu1xiksdmHy3EzdiAzMH4OnYJpF3/nnLuQEdErk/8PuA/HaIncq/K
+CANFmtojhREyYjzEQcBJ8LTHGkWBM3rXYma+GpZNW2+lHQ8PthzGQFT2E1RWUmzx
+j1UCgYBzpb9UwLThvd89okbI4ghANH/1S8InClgcOKNpksi62G4wqosExUBFmWI1
+HQ5Fmsx26MtEqhQQXm4Za6Dyisyth1/SwHUXDTmpb4kaWQpE34xkoH7OmeiUc1df
+xA0acNks2JHTfE4ofu5r+8eUIKGTKUBmmVq71q/ALinINYiNgA==
+-----END RSA PRIVATE KEY-----
+</VMPrivateKey>
+                        <VMPublicKey>ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEApHc2+O+RlXTkUoIZsoO9M73+O7LSGRNPviK57Fr11dI08y/DOnJesALm1wQoQQ476RpMS8Vu/RQ9/hHRSNnjOrxLfmrlzd5Gn7Lh9sBN9Z53um4Pl/selJDj6Q19H8ui43W/qkfsQDJ5FehYSbMklfvOhkJg5SHn1d/8Z/sSi1AiaGoJQVdftJ7oI6dNoU0M+CXHWwshEpUHLRosY55GecgU0gNwXEG9cf9UId7YqYIgh8QhB6eQqufO+QrsP6Q4J/GXh1gzRVC//v4qt+f+V0RXqZmJSy/+L24pUsys8yTond+D5Bs1Is0E1W42gCXuipPNWwkS0bDAU+JPIr77Bw== rsa-key-20180709</VMPublicKey>
+                        <VMKeyPairName>testkey</VMKeyPairName>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:otntyIgeneral="http://opentosca.org/nodetypes" name=" JavaSender_1-w1-wip1" minInstances="1" maxInstances="1" type="otntyIgeneral:JavaSender_1-w1-wip1" id="JavaSender_1-w1-wip1" winery:x="519" winery:y="152"/>
+            <NodeTemplate xmlns:otntyIgeneral="http://opentosca.org/nodetypes" name=" JavaReceiver_1-w1-wip1" minInstances="1" maxInstances="1" type="otntyIgeneral:JavaReceiver_1-w1-wip1" id="JavaReceiver_1-w1-wip1" winery:x="803" winery:y="148"/>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_1" type="ToscaBaseTypes:HostedOn" id="con_1">
+                <SourceElement ref="Ubuntu-14.04-VM"/>
+                <TargetElement ref="VSphere_5.5"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_2" type="ToscaBaseTypes:HostedOn" id="con_2">
+                <SourceElement ref="Ubuntu-14.04-VM_2"/>
+                <TargetElement ref="VSphere_5.5_2"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_3" type="ToscaBaseTypes:HostedOn" id="con_3">
+                <SourceElement ref="JavaSender_1-w1-wip1"/>
+                <TargetElement ref="Ubuntu-14.04-VM"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_4" type="ToscaBaseTypes:ConnectsTo" id="con_4">
+                <SourceElement ref="JavaSender_1-w1-wip1"/>
+                <TargetElement ref="JavaReceiver_1-w1-wip1"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_5" type="ToscaBaseTypes:HostedOn" id="con_5">
+                <SourceElement ref="JavaReceiver_1-w1-wip1"/>
+                <TargetElement ref="Ubuntu-14.04-VM_2"/>
+            </RelationshipTemplate>
+        </TopologyTemplate>
+    </ServiceTemplate>
+</Definitions>
