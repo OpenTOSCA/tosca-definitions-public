@@ -1,0 +1,9 @@
+runsOnVm sourceNode
+runsOnVm targetNode
+hasSecureVersion sourceNodeHost
+hasSecureVersion targetNodeHost
+---
+replaceNode sourceNodeHost sourceNodeHost-secure
+replaceNode targetNodeHost targetNodeHost-secure
+addRelationship http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes::connectsTo sourceNodeHost-secure targetNodeHost-secure
+addRelationship http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes::connectsTo targetNodeHost-secure sourceNodeHost-secure

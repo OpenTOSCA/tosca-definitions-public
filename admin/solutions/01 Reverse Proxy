@@ -1,0 +1,11 @@
+runsOnVm sourceNode
+runsOnVm targetNode
+---
+addNode http://opentosca.org/nodetypes::nginx_1-w1-wip1 reverseProxy
+addNode http://opentosca.org/nodetypes::nginx-ssl_1-w1-wip1 reverseProxyTarget
+addRelationship http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes::hostedOn reverseProxy sourceNodeHost
+addRelationship http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes::hostedOn reverseProxyTarget targetNodeHost
+addRelationship http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes::connectsTo sourceNode reverseProxy
+addRelationship http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes::connectsTo reverseProxy reverseProxyTarget
+addRelationship http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes::connectsTo reverseProxyTarget targetNode
+deleteRelationship sourceNode targetNode
