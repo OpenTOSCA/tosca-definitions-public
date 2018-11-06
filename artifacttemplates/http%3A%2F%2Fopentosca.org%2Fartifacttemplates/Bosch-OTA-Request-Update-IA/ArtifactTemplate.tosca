@@ -9,7 +9,7 @@
             </WSProperties>
         </Properties>
         <ArtifactReferences>
-            <ArtifactReference reference="artifacttemplates/http%253A%252F%252Fopentosca.org%252Fartifacttemplates/BoschOTAUpdateDevice-http---iot-opentosca-org-interfaces-devicemanagement-IA/files/org_opentosca_nodetypes_BoschOTAUpdateDevice__org_opentosca_iot_interfaces_devicemanagement.war"/>
+            <ArtifactReference reference="artifacttemplates/http%253A%252F%252Fopentosca.org%252Fartifacttemplates/Bosch-OTA-Request-Update-IA/files/org_opentosca_nodetypes_BoschOTAUpdateDevice__org_opentosca_iot_interfaces_devicemanagement.war"/>
         </ArtifactReferences>
     </ArtifactTemplate>
 </Definitions>

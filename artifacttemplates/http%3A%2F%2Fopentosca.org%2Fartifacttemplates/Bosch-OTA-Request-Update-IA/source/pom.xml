@@ -36,7 +36,7 @@
 
     <properties>
         <run.HttpPort>9090</run.HttpPort>
-        <winery.upload.url>http://141.58.46.117:8080/winery/artifacttemplates/http%253A%252F%252Fopentosca.org%252Fartifacttemplates/BoschOTAUpdateDevice-http---iot-opentosca-org-interfaces-devicemanagement-IA/files</winery.upload.url>
+        <winery.upload.url>http://localhost:8080/winery/artifacttemplates/http%253A%252F%252Fopentosca.org%252Fartifacttemplates/Bosch-OTA-Request-Update-IA/files</winery.upload.url>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -46,7 +46,26 @@
 
     <dependencies>
         <!-- LIBRARIES ADDED FOR IMPLEMENTATION ARTIFACT IMPLEMENTATION -->
-
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180130</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.5.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.4.0-b180725.0644</version>
+        </dependency>
 
         <!-- END - LIBRARIES ADDED FOR IMPLEMENTATION ARTIFACT IMPLEMENTATION -->
         <dependency>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/artifacttemplates" id="winery-defs-for_otateIgeneral-BoschOTAManager--groupmanagement-update-IA">
+    <ArtifactTemplate xmlns:otatyIgeneral="http://opentosca.org/artifacttypes" name="BoschOTAManager--groupmanagement-update-IA" type="otatyIgeneral:WAR" id="BoschOTAManager--groupmanagement-update-IA">
+        <Properties>
+            <WSProperties xmlns="http://www.opentosca.org/artifacttypes">
+                <ServiceEndpoint>/services/org_opentosca_nodetypes_BoschOTAManager__groupmanagement_updatePort</ServiceEndpoint>
+                <PortType>{http://opentosca.org/nodetypes}org_opentosca_nodetypes_BoschOTAManager__groupmanagement_update</PortType>
+                <InvocationType>SOAP/HTTP</InvocationType>
+            </WSProperties>
+        </Properties>
+        <ArtifactReferences>
+            <ArtifactReference reference="artifacttemplates/http%253A%252F%252Fopentosca.org%252Fartifacttemplates/BoschOTAManager--groupmanagement-update-IA/files/org_opentosca_nodetypes_BoschOTAManager__groupmanagement_update.war"/>
+        </ArtifactReferences>
+    </ArtifactTemplate>
+</Definitions>
