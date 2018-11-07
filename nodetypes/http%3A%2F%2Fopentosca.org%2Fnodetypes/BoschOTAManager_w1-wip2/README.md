@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # BoschOTAManager 
+=======
+# Device 
+>>>>>>> 1daa924ff2006fd378696a5c389deb100ce8969a
 
 > This node represents a existing Rollout/HawkBit Software System. It implements the interfaces to request devices and distribution sets from a given Rollout/HawkBit instance, create new distribution sets and add binaries to them and to update devices.
 
@@ -10,7 +14,10 @@
 - `distributionSetName`
 - `deviceName`
 - `urlToBinary`
+<<<<<<< HEAD
 - `nameOfGroup`
+=======
+>>>>>>> 1daa924ff2006fd378696a5c389deb100ce8969a
 
 ## Haftungsausschluss
 

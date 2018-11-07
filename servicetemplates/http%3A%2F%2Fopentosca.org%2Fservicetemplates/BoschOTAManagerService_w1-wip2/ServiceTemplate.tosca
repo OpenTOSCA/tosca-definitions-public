@@ -4,6 +4,7 @@
         <Tags>
             <Tag name="iotplan_1" value="addBinary"/>
             <Tag name="iotplan_2" value="updateDevice"/>
+<<<<<<< HEAD
             <Tag name="iotplan_3" value="syncTOSCAwithRollout"/>
             <Tag name="iotplan_4" value="createGroup"/>
             <Tag name="iotplan_5" value="addDeviceToGroup"/>
@@ -11,13 +12,22 @@
         </Tags>
         <TopologyTemplate>
             <NodeTemplate xmlns:otntyIgeneral="http://opentosca.org/nodetypes" name="DistributionSet_w1-wip2" minInstances="1" maxInstances="1" type="otntyIgeneral:DistributionSet_w1-wip2" id="DistributionSet_w1-wip2" winery:x="377" winery:y="257">
+=======
+        </Tags>
+        <TopologyTemplate>
+            <NodeTemplate xmlns:otntyIgeneral="http://opentosca.org/nodetypes" name="DistributionSet_w1-wip2" minInstances="1" maxInstances="1" type="otntyIgeneral:DistributionSet_w1-wip2" id="DistributionSet_w1-wip2" winery:x="416" winery:y="282">
+>>>>>>> 1daa924ff2006fd378696a5c389deb100ce8969a
                 <Properties>
                     <Properties xmlns="http://www.example.org">
                         <distributionSet>get_output: distributionSet</distributionSet>
                     </Properties>
                 </Properties>
             </NodeTemplate>
+<<<<<<< HEAD
             <NodeTemplate xmlns:otntyIgeneral="http://opentosca.org/nodetypes" name="Device_w1-wip2" minInstances="1" maxInstances="1" type="otntyIgeneral:Device_w1-wip2" id="Device_w1-wip2" winery:x="1095" winery:y="257">
+=======
+            <NodeTemplate xmlns:otntyIgeneral="http://opentosca.org/nodetypes" name="Device_w1-wip2" minInstances="1" maxInstances="1" type="otntyIgeneral:Device_w1-wip2" id="Device_w1-wip2" winery:x="1165" winery:y="282">
+>>>>>>> 1daa924ff2006fd378696a5c389deb100ce8969a
                 <Properties>
                     <Properties xmlns="http://www.example.org">
                         <deviceID>get_output: deviceID</deviceID>
@@ -25,6 +35,7 @@
                     </Properties>
                 </Properties>
             </NodeTemplate>
+<<<<<<< HEAD
             <NodeTemplate xmlns:otntyIgeneral="http://opentosca.org/nodetypes" name="BoschOTAManager_w1-wip2" minInstances="1" maxInstances="1" type="otntyIgeneral:BoschOTAManager_w1-wip2" id="BoschOTAManager_w1-wip2" winery:x="743" winery:y="533">
                 <Properties>
                     <Properties xmlns="http://www.example.org">
@@ -44,6 +55,18 @@
                     <Properties xmlns="http://www.example.org">
                         <groupName>get_output: groupName</groupName>
                         <deviceList>get_output: deviceList</deviceList>
+=======
+            <NodeTemplate xmlns:otntyIgeneral="http://opentosca.org/nodetypes" name="BoschOTAManager_w1-wip2" minInstances="1" maxInstances="1" type="otntyIgeneral:BoschOTAManager_w1-wip2" id="BoschOTAManager_w1-wip2" winery:x="739" winery:y="533">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <tenant>D27B435C-ABBB-4D97-83E8-4294EFA63125</tenant>
+                        <user>4532b0e0-9b7b-4771-a41e-5b986b716cdf</user>
+                        <password>36cb9aa9-e837-4289-b93b-3d07c2ee76ca</password>
+                        <host>api.eu1.bosch-iot-rollouts.com</host>
+                        <distributionSetName>get_input: distributionSetName</distributionSetName>
+                        <deviceName>get_input: deviceName</deviceName>
+                        <urlToBinary>get_input: urlToBinary</urlToBinary>
+>>>>>>> 1daa924ff2006fd378696a5c389deb100ce8969a
                     </Properties>
                 </Properties>
             </NodeTemplate>
@@ -55,10 +78,13 @@
                 <SourceElement ref="Device_w1-wip2"/>
                 <TargetElement ref="BoschOTAManager_w1-wip2"/>
             </RelationshipTemplate>
+<<<<<<< HEAD
             <RelationshipTemplate xmlns:otntyIgeneral1="http://opentosca.org/relationshiptypes" name="isManagedBy_w1-wip2" type="otntyIgeneral1:isManagedBy_w1-wip2" id="con_isManagedBy_w1-wip2_0">
                 <SourceElement ref="IoT-Group_w1-wip1"/>
                 <TargetElement ref="BoschOTAManager_w1-wip2"/>
             </RelationshipTemplate>
+=======
+>>>>>>> 1daa924ff2006fd378696a5c389deb100ce8969a
         </TopologyTemplate>
     </ServiceTemplate>
 </Definitions>

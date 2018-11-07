@@ -1,14 +1,20 @@
 package org.opentosca.nodetypeimplementations;
 
+<<<<<<< HEAD
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.*;
+=======
+import java.util.HashMap;
+
+>>>>>>> 1daa924ff2006fd378696a5c389deb100ce8969a
 import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
+<<<<<<< HEAD
 
 /**
  * Implementing the Install Operation for the BoschOTA-Manager
@@ -27,10 +33,18 @@ public class org_opentosca_nodetypes_BoschOTARequestDevice_w1_wip1__org_opentosc
 	 * @param password the password of the OTA manager
 	 * @param host the host of the OTA manager
 	 */
+=======
+import javax.xml.bind.annotation.XmlElement;
+
+@WebService
+public class org_opentosca_nodetypes_BoschOTARequestDevice_w1_wip1__org_opentosca_interfaces_lifecycle extends AbstractIAService {
+
+>>>>>>> 1daa924ff2006fd378696a5c389deb100ce8969a
 	@WebMethod
 	@SOAPBinding
 	@Oneway
 	public void install(
+<<<<<<< HEAD
 		@WebParam(name="tenant", targetNamespace="http://nodetypeimplementations.opentosca.org/") String tenant,
 		@WebParam(name="user", targetNamespace="http://nodetypeimplementations.opentosca.org/") String user,
 		@WebParam(name="password", targetNamespace="http://nodetypeimplementations.opentosca.org/") String password,
@@ -151,4 +165,37 @@ public class org_opentosca_nodetypes_BoschOTARequestDevice_w1_wip1__org_opentosc
 		}
 		return returnParameters;
 	}
+=======
+		@WebParam(name="tenant", targetNamespace="http://nodetypeimplementations.opentosca.org/") @XmlElement(required=true) String tenant,
+		@WebParam(name="user", targetNamespace="http://nodetypeimplementations.opentosca.org/") @XmlElement(required=true) String user,
+		@WebParam(name="password", targetNamespace="http://nodetypeimplementations.opentosca.org/") @XmlElement(required=true) String password,
+		@WebParam(name="host", targetNamespace="http://nodetypeimplementations.opentosca.org/") @XmlElement(required=true) String host
+	) {
+		// This HashMap holds the return parameters of this operation.
+		final HashMap<String,String> returnParameters = new HashMap<String, String>();
+
+		// TODO: Implement your operation here.
+
+
+		// Output Parameter 'deviceID' (required)
+		// TODO: Set deviceID parameter here.
+		// Do NOT delete the next line of code. Set "" as value if you want to return nothing or an empty result!
+		returnParameters.put("deviceID", "TODO");
+
+		// Output Parameter 'deviceName' (required)
+		// TODO: Set deviceName parameter here.
+		// Do NOT delete the next line of code. Set "" as value if you want to return nothing or an empty result!
+		returnParameters.put("deviceName", "TODO");
+
+		// Output Parameter 'distributionSet' (required)
+		// TODO: Set distributionSet parameter here.
+		// Do NOT delete the next line of code. Set "" as value if you want to return nothing or an empty result!
+		returnParameters.put("distributionSet", "TODO");
+
+		sendResponse(returnParameters);
+	}
+
+
+
+>>>>>>> 1daa924ff2006fd378696a5c389deb100ce8969a
 }
