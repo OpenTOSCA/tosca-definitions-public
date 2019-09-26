@@ -1,0 +1,290 @@
+{
+  "http://www.opentosca.org/nodetypes" : {
+    "namespace" : "http://www.opentosca.org/nodetypes",
+    "prefix" : "otnt",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://docs.oasis-open.org/tosca/ns/2011/12" : {
+    "namespace" : "http://docs.oasis-open.org/tosca/ns/2011/12",
+    "prefix" : "tosca",
+    "readableName" : "Predefined TOSCA elements",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/artifacttypes/propertiesdefinition/winery" : {
+    "namespace" : "http://opentosca.org/artifacttypes/propertiesdefinition/winery",
+    "prefix" : "otatypdIartifacttypes",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/capabilitytypes" : {
+    "namespace" : "http://opentosca.org/capabilitytypes",
+    "prefix" : "capabilitytypes1",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/artifacttemplates" : {
+    "namespace" : "http://opentosca.org/artifacttemplates",
+    "prefix" : "artifacttemplates",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/policytypes" : {
+    "namespace" : "http://opentosca.org/policytypes",
+    "prefix" : "policytypes",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "https://examples.opentosca.org/edmm/nodetypeimplementations" : {
+    "namespace" : "https://examples.opentosca.org/edmm/nodetypeimplementations",
+    "prefix" : "ntyiIgeneral",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://www.w3.org/2001/XMLSchema" : {
+    "namespace" : "http://www.w3.org/2001/XMLSchema",
+    "prefix" : "xsd",
+    "readableName" : "W3C XML schema namespace",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "https://examples.opentosca.org/edmm/nodetypes/propertiesdefinition/winery" : {
+    "namespace" : "https://examples.opentosca.org/edmm/nodetypes/propertiesdefinition/winery",
+    "prefix" : "ntypdInodetypes",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "https://examples.opentosca.org/edmm/servicetemplates" : {
+    "namespace" : "https://examples.opentosca.org/edmm/servicetemplates",
+    "prefix" : "steIgeneral1",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://www.opentosca.org/winery/extensions/tosca/2013/02/12" : {
+    "namespace" : "http://www.opentosca.org/winery/extensions/tosca/2013/02/12",
+    "prefix" : "winery",
+    "readableName" : "TOSCA extension by Eclipse Winery",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/servicetemplates" : {
+    "namespace" : "http://opentosca.org/servicetemplates",
+    "prefix" : "servicetemplates",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://test.winery.opentosca.org" : {
+    "namespace" : "http://test.winery.opentosca.org",
+    "prefix" : "testwineryopentoscaorg",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/policytypes/annotations/tests" : {
+    "namespace" : "http://opentosca.org/policytypes/annotations/tests",
+    "prefix" : "tests1",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://docs.oasis-open.org/tosca/ns/simple/yaml/1.0/capabilitytypes" : {
+    "namespace" : "http://docs.oasis-open.org/tosca/ns/simple/yaml/1.0/capabilitytypes",
+    "prefix" : "capabilitytypes",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/policytemplates/annotations/tests" : {
+    "namespace" : "http://opentosca.org/policytemplates/annotations/tests",
+    "prefix" : "tests",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/nodetypeimplementations" : {
+    "namespace" : "http://opentosca.org/nodetypeimplementations",
+    "prefix" : "nodetypeimplementations",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://www.example.org" : {
+    "namespace" : "http://www.example.org",
+    "prefix" : "ex",
+    "readableName" : "Namespace for creating examples",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/artifacttypes" : {
+    "namespace" : "http://opentosca.org/artifacttypes",
+    "prefix" : "artifacttypes",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/test/servicetemplates" : {
+    "namespace" : "http://opentosca.org/test/servicetemplates",
+    "prefix" : "otsteIgeneral",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "https://examples.opentosca.org/edmm/nodetypes" : {
+    "namespace" : "https://examples.opentosca.org/edmm/nodetypes",
+    "prefix" : "ntyIgeneral",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/nodetypes" : {
+    "namespace" : "http://opentosca.org/nodetypes",
+    "prefix" : "nodetypes",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://www.uni-stuttgart.de/opentosca" : {
+    "namespace" : "http://www.uni-stuttgart.de/opentosca",
+    "prefix" : "opentosca",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/requirementtypes" : {
+    "namespace" : "http://opentosca.org/requirementtypes",
+    "prefix" : "requirementtypes",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "https://examples.opentosca.org/compliance/nodetypes/propertiesdefinition/winery" : {
+    "namespace" : "https://examples.opentosca.org/compliance/nodetypes/propertiesdefinition/winery",
+    "prefix" : "ntypdInodetypes1",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" : {
+    "namespace" : "http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes",
+    "prefix" : "ToscaBaseTypes",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://www.example.org/tosca/servicetemplates" : {
+    "namespace" : "http://www.example.org/tosca/servicetemplates",
+    "prefix" : "steIgeneral",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://www.w3.org/XML/1998/namespace" : {
+    "namespace" : "http://www.w3.org/XML/1998/namespace",
+    "prefix" : "xmlns",
+    "readableName" : "W3C XML namespace",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://www.eclipse.org/winery/model/selfservice" : {
+    "namespace" : "http://www.eclipse.org/winery/model/selfservice",
+    "prefix" : "selfservice",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/relationshiptypes" : {
+    "namespace" : "http://opentosca.org/relationshiptypes",
+    "prefix" : "relationshiptypes",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "http://opentosca.org/nodetypes/propertiesdefinition/winery" : {
+    "namespace" : "http://opentosca.org/nodetypes/propertiesdefinition/winery",
+    "prefix" : "otntypdInodetypes",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  },
+  "https://examples.opentosca.org/edmm/relationshiptypes" : {
+    "namespace" : "https://examples.opentosca.org/edmm/relationshiptypes",
+    "prefix" : "ntyIgeneral1",
+    "readableName" : "",
+    "upstreamRepository" : "",
+    "generatedNamespace" : false,
+    "secureCollection" : false,
+    "patternCollection" : false
+  }
+}
