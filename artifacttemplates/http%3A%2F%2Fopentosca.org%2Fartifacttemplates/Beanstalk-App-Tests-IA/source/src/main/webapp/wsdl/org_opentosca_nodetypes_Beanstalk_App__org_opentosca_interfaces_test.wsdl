@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="org_opentosca_nodetypes_Beanstalk_App__org_opentosca_interfaces_testService" targetNamespace="http://nodetypeimplementations.opentosca.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://nodetypeimplementations.opentosca.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://nodetypeimplementations.opentosca.org/" elementFormDefault="unqualified" targetNamespace="http://nodetypeimplementations.opentosca.org/" version="1.0">
+<xs:element name="testHttp" type="tns:testHttp"/>
+<xs:element name="testTcpPing" type="tns:testTcpPing"/>
+<xs:complexType name="testHttp">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="AppUrl" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="testTcpPing">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="AppUrl" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="testHttp">
+    <wsdl:part name="parameters" element="tns:testHttp">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testTcpPing">
+    <wsdl:part name="parameters" element="tns:testTcpPing">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="org_opentosca_nodetypes_Beanstalk_App__org_opentosca_interfaces_test">
+    <wsdl:operation name="testHttp">
+      <wsdl:input name="testHttp" message="tns:testHttp">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="testTcpPing">
+      <wsdl:input name="testTcpPing" message="tns:testTcpPing">
+    </wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="org_opentosca_nodetypes_Beanstalk_App__org_opentosca_interfaces_testServiceSoapBinding" type="tns:org_opentosca_nodetypes_Beanstalk_App__org_opentosca_interfaces_test">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="testHttp">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="testHttp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="testTcpPing">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="testTcpPing">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="org_opentosca_nodetypes_Beanstalk_App__org_opentosca_interfaces_testService">
+    <wsdl:port name="org_opentosca_nodetypes_Beanstalk_App__org_opentosca_interfaces_testPort" binding="tns:org_opentosca_nodetypes_Beanstalk_App__org_opentosca_interfaces_testServiceSoapBinding">
+      <soap:address location="http://localhost:9090/org_opentosca_nodetypes_Beanstalk_App__org_opentosca_interfaces_testPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

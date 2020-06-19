@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/servicetemplates" id="winery-defs-for_servicetemplates-Shor_IBM-w1">
+    <ServiceTemplate name="Shor_IBM-w1" targetNamespace="http://opentosca.org/servicetemplates" id="Shor_IBM-w1">
+        <TopologyTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="DockerEngine" minInstances="1" maxInstances="1" type="nodetypes:DockerEngine" id="DockerEngine" winery:x="378" winery:y="590">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <DockerEngineURL>get_input: DockerEngineUrl</DockerEngineURL>
+                        <DockerEngineCertificate/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="DockerContainer" minInstances="1" maxInstances="1" type="nodetypes:DockerContainer" id="DockerContainer" winery:x="378" winery:y="440">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <Port>get_input: FrontendPort</Port>
+                        <ContainerPort>80</ContainerPort>
+                        <ContainerID/>
+                        <ContainerIP/>
+                        <ImageID>ubuntu:18.04</ImageID>
+                        <ContainerMountPath/>
+                        <HostMountFiles/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="NGINX" minInstances="1" maxInstances="1" type="nodetypes:NGINX_latest-w1" id="NGINX" winery:x="378" winery:y="309">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="IBMQ_w1" minInstances="1" maxInstances="1" type="nodetypes:IBMQ_w1" id="IBMQ_w1" winery:x="784" winery:y="303">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <PROVIDER>IBMQ</PROVIDER>
+                        <IBMQ_HUB/>
+                        <IBMQ_BACKEND_NAME>get_input: IBMQ_BACKNED_NAME</IBMQ_BACKEND_NAME>
+                        <IBMQ_TOKEN>get_input: IBMQ_TOKEN</IBMQ_TOKEN>
+                        <IBMQ_PROJECT/>
+                        <IBMQ_GROUP/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="QC-App_w1" minInstances="1" maxInstances="1" type="nodetypes:QC-App_w1" id="QC-App_w1" winery:x="790" winery:y="154">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <Port>8080</Port>
+                    </Properties>
+                </Properties>
+                <DeploymentArtifacts>
+                    <DeploymentArtifact xmlns:artifacttypes="http://opentosca.org/artifacttypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="Shor" artifactType="artifacttypes:QiskitApp_w1" artifactRef="artifacttemplates:ShorAlgo_Qiskit-w1"/>
+                </DeploymentArtifacts>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Shor-App-UI_w1" minInstances="1" maxInstances="1" type="nodetypes:Shor-App-UI_w1" id="Shor-App-UI_w1" winery:x="383" winery:y="147">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <AppName>ShorAppUI</AppName>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_0">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+                <SourceElement ref="DockerContainer"/>
+                <TargetElement ref="DockerEngine"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_1">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+                <SourceElement ref="NGINX"/>
+                <TargetElement ref="DockerContainer"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_3">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+                <SourceElement ref="QC-App_w1"/>
+                <TargetElement ref="IBMQ_w1"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_2">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+                <SourceElement ref="Shor-App-UI_w1"/>
+                <TargetElement ref="NGINX"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="ConnectsTo" type="ToscaBaseTypes:ConnectsTo" id="con_ConnectsTo_0">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <ChannelType/>
+                    </Properties>
+                </Properties>
+                <SourceElement ref="Shor-App-UI_w1"/>
+                <TargetElement ref="QC-App_w1"/>
+            </RelationshipTemplate>
+        </TopologyTemplate>
+    </ServiceTemplate>
+</Definitions>

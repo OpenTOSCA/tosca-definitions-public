@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/servicetemplates" id="winery-defs-for_servicetemplates-Algo_On_PennyLane_w1">
+    <ServiceTemplate name="Algo_On_PennyLane_w1" targetNamespace="http://opentosca.org/servicetemplates" id="Algo_On_PennyLane_w1">
+        <TopologyTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Ubuntu-VM" minInstances="1" maxInstances="1" type="nodetypes:Ubuntu-VM_18.04-w1" id="Ubuntu-VM_18.04-w1_0" winery:x="1133" winery:y="870">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <VMIP>get_input: IP</VMIP>
+                        <VMInstanceID/>
+                        <VMType/>
+                        <VMUserName>ubuntu</VMUserName>
+                        <VMUserPassword/>
+                        <VMPrivateKey>get_input: key</VMPrivateKey>
+                        <VMPublicKey/>
+                        <VMKeyPairName/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Python_3" minInstances="1" maxInstances="1" type="nodetypes:Python_3" id="Python_3_0" winery:x="857" winery:y="740">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="PennyLane_w1" minInstances="1" maxInstances="1" type="nodetypes:PennyLane_w1" id="PennyLane_w1_0" winery:x="1162" winery:y="626">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="PennyLane-App_w1" minInstances="1" maxInstances="1" type="nodetypes:PennyLane-App_w1" id="PennyLane-App_w1_0" winery:x="1173" winery:y="479">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <Port>8080</Port>
+                    </Properties>
+                </Properties>
+                <DeploymentArtifacts>
+                    <DeploymentArtifact xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="PennyLaneAlgo_DA" artifactType="ToscaBaseTypes:ScriptArtifact" artifactRef="artifacttemplates:PennyLaneAlgo_DA_AT"/>
+                </DeploymentArtifacts>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="PennyLane-Simulator_w1" minInstances="1" maxInstances="1" type="nodetypes:PennyLane-Simulator_w1" id="PennyLane-Simulator_w1_0" winery:x="1507" winery:y="637">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <Device>default.qubit</Device>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_0">
+                <SourceElement ref="Python_3_0"/>
+                <TargetElement ref="Ubuntu-VM_18.04-w1_0"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_1">
+                <SourceElement ref="PennyLane_w1_0"/>
+                <TargetElement ref="Ubuntu-VM_18.04-w1_0"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="DependsOn" type="ToscaBaseTypes:DependsOn" id="con_DependsOn_0">
+                <SourceElement ref="PennyLane_w1_0"/>
+                <TargetElement ref="Python_3_0"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_2">
+                <SourceElement ref="PennyLane-App_w1_0"/>
+                <TargetElement ref="PennyLane_w1_0"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="ConnectsTo" type="ToscaBaseTypes:ConnectsTo" id="con_ConnectsTo_0">
+                <SourceElement ref="PennyLane_w1_0"/>
+                <TargetElement ref="PennyLane-Simulator_w1_0"/>
+            </RelationshipTemplate>
+        </TopologyTemplate>
+    </ServiceTemplate>
+</Definitions>

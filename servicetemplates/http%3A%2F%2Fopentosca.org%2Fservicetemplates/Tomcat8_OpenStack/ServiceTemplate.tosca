@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns1="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns7-Tomcat8_OpenStack" targetNamespace="http://opentosca.org/servicetemplates">
+    <tosca:ServiceTemplate name="Tomcat8_OpenStack" targetNamespace="http://opentosca.org/servicetemplates" id="Tomcat8_OpenStack">
+        <tosca:BoundaryDefinitions>
+            <tosca:Properties>
+                <ns0:selfserviceApplicationUrl xmlns:ns0="http://www.eclipse.org/winery/model/selfservice"/>
+                <tosca:PropertyMappings>
+                    <tosca:PropertyMapping serviceTemplatePropertyRef="/*[local-name()='selfserviceApplicationUrl']" targetObjectRef="Ubuntu-14_04-VM" targetPropertyRef="concat('http://', Ubuntu-14_04-VM.Properties.VMIP, ':8080')"/>
+                </tosca:PropertyMappings>
+            </tosca:Properties>
+        </tosca:BoundaryDefinitions>
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate xmlns:ns3="http://opentosca.org/nodetypes" name="OpenStack-Liberty-12" type="ns3:OpenStack-Liberty-12" id="OpenStack-Liberty-12" winery:location="undefined" winery:x="824" winery:y="908">
+                <tosca:Properties>
+                    <ns2:CloudProviderProperties xmlns:ns2="http://opentosca.org/nodetypes" xmlns="http://opentosca.org/nodetypes" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:HypervisorEndpoint>asflexsm.informatik.uni-stuttgart.de</ty:HypervisorEndpoint>
+                        <ty:HypervisorTenantID>SmartServices</ty:HypervisorTenantID>
+                        <ty:HypervisorUserName>get_input: OpenStackUser</ty:HypervisorUserName>
+                        <ty:HypervisorUserPassword>get_input: OpenStackUserPassword</ty:HypervisorUserPassword>
+			</ns2:CloudProviderProperties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns3="http://opentosca.org/nodetypes" name="Ubuntu-14.04-VM" type="ns3:Ubuntu-14.04-VM" id="Ubuntu-14_04-VM" winery:location="undefined" winery:x="825" winery:y="731">
+                <tosca:Properties>
+                    <ns2:VirtualMachineProperties xmlns:ns2="http://opentosca.org/nodetypes" xmlns="http://opentosca.org/nodetypes" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:VMIP/>
+                        <ty:VMInstanceID/>
+                        <ty:VMType>m1.small</ty:VMType>
+                        <ty:VMUserName>ubuntu</ty:VMUserName>
+                        <ty:VMUserPassword>N/A</ty:VMUserPassword>
+                        <ty:VMPrivateKey>get_input: VMPrivateKey</ty:VMPrivateKey>
+                        <ty:VMPublicKey>N/A</ty:VMPublicKey>
+                        <ty:VMKeyPairName>get_input: VMKeyPairName</ty:VMKeyPairName>
+			</ns2:VirtualMachineProperties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns3="http://opentosca.org/nodetypes" name="Java8" type="ns3:Java8" id="Java8" winery:location="undefined" winery:x="1017" winery:y="581.99"/>
+            <tosca:NodeTemplate xmlns:ns3="http://opentosca.org/nodetypes" name="Tomcat8" type="ns3:Tomcat8" id="Tomcat8" winery:location="undefined" winery:x="823.986" winery:y="430.993"/>
+            <tosca:RelationshipTemplate xmlns:ns6="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_13" type="ns6:HostedOn" id="con_13">
+                <tosca:SourceElement ref="Ubuntu-14_04-VM"/>
+                <tosca:TargetElement ref="OpenStack-Liberty-12"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:ns6="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_22" type="ns6:HostedOn" id="con_22">
+                <tosca:SourceElement ref="Java8"/>
+                <tosca:TargetElement ref="Ubuntu-14_04-VM"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:ns6="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_31" type="ns6:HostedOn" id="con_31">
+                <tosca:SourceElement ref="Tomcat8"/>
+                <tosca:TargetElement ref="Ubuntu-14_04-VM"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:ns6="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_43" type="ns6:DependsOn" id="con_43">
+                <tosca:SourceElement ref="Tomcat8"/>
+                <tosca:TargetElement ref="Java8"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

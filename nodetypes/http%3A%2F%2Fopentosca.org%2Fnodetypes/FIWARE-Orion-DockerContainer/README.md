@@ -6,7 +6,6 @@
 
 - `ContainerPort`
 - `Port`
-- `SSHPort`
 
 ## Haftungsausschluss
 

@@ -1,0 +1,58 @@
+{
+  "oneToOneMapping": [
+    {
+      "edmmType": "hosted_on",
+      "toscaType": "{http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes}HostedOn"
+    },
+    {
+      "edmmType": "depends_on",
+      "toscaType": "{http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes}DependsOn"
+    },
+    {
+      "edmmType": "tomcat",
+      "toscaType": "{https://examples.opentosca.org/edmm/nodetypes}Tomcat_w1"
+    },
+    {
+      "edmmType": "web_application",
+      "toscaType": "{https://examples.opentosca.org/edmm/nodetypes}Web_Application_w1"
+    },
+    {
+      "edmmType": "connects_to",
+      "toscaType": "{https://examples.opentosca.org/edmm/relationshiptypes}connects_to_w1"
+    },
+    {
+      "edmmType": "web_server",
+      "toscaType": "{https://examples.opentosca.org/edmm/nodetypes}Web_Server_w1"
+    },
+    {
+      "edmmType": "dbms",
+      "toscaType": "{https://examples.opentosca.org/edmm/nodetypes}DBMS_w1"
+    },
+    {
+      "edmmType": "compute",
+      "toscaType": "{https://examples.opentosca.org/edmm/nodetypes}Compute_w1"
+    },
+    {
+      "edmmType": "database",
+      "toscaType": "{https://examples.opentosca.org/edmm/nodetypes}Database_EDMM-w1"
+    },
+    {
+      "edmmType": "mysql_dbms",
+      "toscaType": "{https://examples.opentosca.org/edmm/nodetypes}MySQL_DBMS_w1"
+    },
+    {
+      "edmmType": "mysql_database",
+      "toscaType": "{https://examples.opentosca.org/edmm/nodetypes}MySQL_Database_w1"
+    }
+  ],
+  "edmmTypeMapping": [
+    {
+      "edmmType": "software_component",
+      "toscaType": "{https://examples.opentosca.org/edmm/nodetypes}Web_Server_w1"
+    },
+    {
+      "edmmType": "web_application",
+      "toscaType": "{https://examples.opentosca.org/edmm/nodetypes}Pet_Clinic_w1"
+    }
+  ]
+}

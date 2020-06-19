@@ -15,7 +15,6 @@
                     <ns2:Properties xmlns:ns2="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns:ty="http://opentosca.org/nodetypes">
                         <ContainerPort>1026</ContainerPort>
                         <Port>get_input: ApplicationPort</Port>
-                        <SSHPort/>
 			</ns2:Properties>
                 </tosca:Properties>
                 <tosca:DeploymentArtifacts>

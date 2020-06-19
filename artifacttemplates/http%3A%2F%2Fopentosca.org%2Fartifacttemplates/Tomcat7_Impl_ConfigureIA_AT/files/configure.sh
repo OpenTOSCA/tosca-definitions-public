@@ -10,22 +10,22 @@ IFS=';' read -ra NAMES <<< "$DAs";
 for i in "${NAMES[@]}"; do
         #echo "KeyValue-Pair: "
         #echo $i
-        IFS=',' read -ra PATH <<< "$i";    
+        IFS=',' read -ra entry <<< "$i";    
         #echo "Key: "
-        #echo ${PATH[0]}
+        #echo ${entry[0]}
         #echo "Value: "
-        #echo ${PATH[1]}
-	echo ${PATH[1]}
-        if [[ "${PATH[1]}" == *tomcat-users.xml ]];
+        #echo ${entry[1]}
+	echo ${entry[1]}
+        if [[ "${entry[1]}" == *tomcat-users.xml ]];
         then    
 		echo "Copy of tomcat-users.xml"
-	        /usr/bin/sudo /bin/cp $csarRoot${PATH[1]} /var/lib/tomcat7/conf
+	        sudo cp $csarRoot${entry[1]} /var/lib/tomcat7/conf
         fi
-	if [[ "${PATH[1]}" == *server.xml ]];
+	if [[ "${entry[1]}" == *server.xml ]];
         then    
 		echo "Copy of server.xml"
-	        /usr/bin/sudo /bin/cp $csarRoot${PATH[1]} /var/lib/tomcat7/conf
+	        sudo cp $csarRoot${entry[1]} /var/lib/tomcat7/conf
         fi
 done
 
-/usr/bin/sudo service tomcat7 restart
+sudo service tomcat7 restart

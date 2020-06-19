@@ -36,7 +36,6 @@ public class org_opentosca_nodetypes_Java_Shop_Application__org_opentosca_interf
     logger.info("Connection Details: {}", connectionDetail.toString());
     ConnectionDetails.getInstance().add(connectionDetail);
     responsePayload.put("Result", "SUCCESS");
-    responsePayload.put("ConnectionDetail", connectionDetail.toString());
     this.sendResponse(responsePayload);
     logger.info("END - connectTo()");
   }

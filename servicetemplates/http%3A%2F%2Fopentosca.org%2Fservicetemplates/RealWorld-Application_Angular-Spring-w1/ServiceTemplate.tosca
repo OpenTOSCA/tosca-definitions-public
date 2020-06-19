@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/servicetemplates" id="winery-defs-for_servicetemplates-RealWorld-Application_Angular-Spring-w1">
+    <ServiceTemplate name="RealWorld-Application_Angular-Spring-w1" targetNamespace="http://opentosca.org/servicetemplates" id="RealWorld-Application_Angular-Spring-w1">
+        <TopologyTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="DockerEngine" minInstances="1" maxInstances="1" type="nodetypes:DockerEngine" id="DockerEngine" winery:x="344" winery:y="626">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <DockerEngineURL>get_input: DockerUrl</DockerEngineURL>
+                        <DockerEngineCertificate/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="DockerContainer" minInstances="1" maxInstances="1" type="nodetypes:DockerContainer" id="DockerContainer" winery:x="548" winery:y="491">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <Port>get_input:BackendPort</Port>
+                        <ContainerPort>get_input:BackendPort</ContainerPort>
+                        <ContainerID/>
+                        <ContainerIP/>
+                        <ImageID>ubuntu:18.04</ImageID>
+                        <ContainerMountPath/>
+                        <HostMountFiles/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Java8" minInstances="1" maxInstances="1" type="nodetypes:Java8" id="Java8_2" winery:x="548" winery:y="342"/>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="SpringWebApp_w1" minInstances="1" maxInstances="1" type="nodetypes:SpringWebApp_w1" id="SpringWebApp_w1" winery:x="548" winery:y="124">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <AppName>RealWorldApplication-Spring</AppName>
+                        <Port>get_input:BackendPort</Port>
+                    </Properties>
+                </Properties>
+                <DeploymentArtifacts>
+                    <DeploymentArtifact xmlns:artifacttypes="http://opentosca.org/artifacttypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="DA" artifactType="artifacttypes:JAR" artifactRef="artifacttemplates:RealWorld-Application-Backend-DA_Spring-w1"/>
+                </DeploymentArtifacts>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="DockerContainer" minInstances="1" maxInstances="1" type="nodetypes:DockerContainer" id="DockerContainer_2" winery:x="133" winery:y="491">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <Port>get_input:FrontendPort</Port>
+                        <ContainerPort>80</ContainerPort>
+                        <ContainerID/>
+                        <ContainerIP/>
+                        <ImageID>ubuntu:18.04</ImageID>
+                        <ContainerMountPath/>
+                        <HostMountFiles/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="NGINX_latest-w1" minInstances="1" maxInstances="1" type="nodetypes:NGINX_latest-w1" id="NGINX_latest-w1" winery:x="133" winery:y="342"/>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="RealWorld-Application_Angular-w1" minInstances="1" maxInstances="1" type="nodetypes:RealWorld-Application_Angular-w1" id="RealWorld-Application_Angular-w1" winery:x="133" winery:y="124">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <AppName>RealWorldApplication-Angular</AppName>
+                    </Properties>
+                </Properties>
+                <DeploymentArtifacts>
+                    <DeploymentArtifact xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="RealWorldApplication-Angular" artifactType="ToscaBaseTypes:ArchiveArtifact" artifactRef="artifacttemplates:RealWorld-Application-Frontend-DA_Angular-w1"/>
+                </DeploymentArtifacts>
+            </NodeTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_0">
+                <SourceElement ref="DockerContainer"/>
+                <TargetElement ref="DockerEngine"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_1">
+                <SourceElement ref="Java8_2"/>
+                <TargetElement ref="DockerContainer"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_2">
+                <SourceElement ref="SpringWebApp_w1"/>
+                <TargetElement ref="Java8_2"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_3">
+                <SourceElement ref="DockerContainer_2"/>
+                <TargetElement ref="DockerEngine"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_4">
+                <SourceElement ref="NGINX_latest-w1"/>
+                <TargetElement ref="DockerContainer_2"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="ConnectsTo" type="ToscaBaseTypes:ConnectsTo" id="con_ConnectsTo_0">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <ChannelType/>
+                    </Properties>
+                </Properties>
+                <SourceElement ref="RealWorld-Application_Angular-w1"/>
+                <TargetElement ref="SpringWebApp_w1"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_5">
+                <SourceElement ref="RealWorld-Application_Angular-w1"/>
+                <TargetElement ref="NGINX_latest-w1"/>
+            </RelationshipTemplate>
+        </TopologyTemplate>
+    </ServiceTemplate>
+</Definitions>

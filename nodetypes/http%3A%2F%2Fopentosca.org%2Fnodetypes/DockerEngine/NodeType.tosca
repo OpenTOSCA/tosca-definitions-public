@@ -20,7 +20,6 @@
                         <InputParameter name="ContainerImage" type="xs:string" required="yes"/>
                         <InputParameter name="ContainerPorts" type="xs:string" required="no"/>
                         <InputParameter name="ContainerEnv" type="xs:string" required="no"/>
-                        <InputParameter name="SSHPort" type="xs:string" required="no"/>
                         <InputParameter name="Devices" type="xs:string" required="no"/>
                         <InputParameter name="Links" type="xs:string" required="no"/>
                         <InputParameter name="RemoteVolumeData" type="xs:string" required="no"/>
@@ -33,7 +32,6 @@
                         <OutputParameter name="ContainerPorts" type="xs:string" required="no"/>
                         <OutputParameter name="ContainerID" type="xs:string" required="no"/>
                         <OutputParameter name="ContainerIP" type="xs:string" required="no"/>
-                        <OutputParameter name="SSHPort" type="xs:string" required="no"/>
                     </OutputParameters>
                 </Operation>
                 <Operation name="removeContainer">

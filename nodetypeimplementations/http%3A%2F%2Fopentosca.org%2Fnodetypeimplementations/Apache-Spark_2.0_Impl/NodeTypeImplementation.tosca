@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions id="winery-defs-for_ns10-Apache-Spark_2.0_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
+    <tosca:NodeTypeImplementation name="Apache-Spark_2.0_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" nodeType="ns1:Apache-Spark_2.0" xmlns:ns1="http://opentosca.org/nodetypes">
+        <tosca:ImplementationArtifacts>
+            <tosca:ImplementationArtifact name="Apache-Spark_2.0_Install_IA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="install" artifactType="ns4:ScriptArtifact" artifactRef="ns7:Apache-Spark-2.0.2_Install_IA" xmlns:ns7="http://opentosca.org/artifacttemplates" xmlns:ns4="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes"/>
+            <tosca:ImplementationArtifact name="Apache-Spark_2.0_Start_IA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="start" artifactType="ns4:ScriptArtifact" artifactRef="ns7:Apache-Spark-2.0.2_Start_IA" xmlns:ns7="http://opentosca.org/artifacttemplates" xmlns:ns4="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes"/>
+        </tosca:ImplementationArtifacts>
+    </tosca:NodeTypeImplementation>
+</tosca:Definitions>

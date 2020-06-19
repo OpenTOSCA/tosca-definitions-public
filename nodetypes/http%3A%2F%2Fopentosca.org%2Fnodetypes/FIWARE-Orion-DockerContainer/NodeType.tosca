@@ -10,10 +10,6 @@
                 <winery:key>Port</winery:key>
                 <winery:type>xsd:string</winery:type>
             </winery:properties>
-            <winery:properties>
-                <winery:key>SSHPort</winery:key>
-                <winery:type>xsd:string</winery:type>
-            </winery:properties>
         </winery:PropertiesDefinition>
         <tosca:DerivedFrom xmlns:ns4="http://opentosca.org/nodetypes" typeRef="ns4:DockerContainer"/>
     </tosca:NodeType>

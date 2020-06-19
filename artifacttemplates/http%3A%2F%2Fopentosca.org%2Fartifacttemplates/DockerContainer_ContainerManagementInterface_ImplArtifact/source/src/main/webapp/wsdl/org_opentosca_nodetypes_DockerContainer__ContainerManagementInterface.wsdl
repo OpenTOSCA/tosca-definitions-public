@@ -6,15 +6,17 @@
 <xs:element name="transferFile" type="tns:transferFile"/>
 <xs:complexType name="runScript">
     <xs:sequence>
-      <xs:element form="qualified" minOccurs="0" name="ContainerIP" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="SSHPort" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="DockerEngineURL" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="DockerEngineCertificate" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="ContainerID" type="xs:string"/>
       <xs:element form="qualified" minOccurs="0" name="Script" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 <xs:complexType name="transferFile">
     <xs:sequence>
-      <xs:element form="qualified" minOccurs="0" name="ContainerIP" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="SSHPort" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="DockerEngineURL" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="DockerEngineCertificate" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="ContainerID" type="xs:string"/>
       <xs:element form="qualified" minOccurs="0" name="TargetAbsolutePath" type="xs:string"/>
       <xs:element form="qualified" minOccurs="0" name="SourceURLorLocalPath" type="xs:string"/>
     </xs:sequence>

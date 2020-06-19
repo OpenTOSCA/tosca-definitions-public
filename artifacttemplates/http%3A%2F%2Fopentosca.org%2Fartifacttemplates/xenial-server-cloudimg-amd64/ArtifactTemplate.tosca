@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/artifacttemplates" id="winery-defs-for_artifacttemplates-xenial-server-cloudimg-amd64">
+    <ArtifactTemplate xmlns:artifacttypes="http://opentosca.org/artifacttypes" name="xenial-server-cloudimg-amd64" type="artifacttypes:URIArtifact" id="xenial-server-cloudimg-amd64">
+        <Properties>
+            <properties xmlns="http://opentosca.org/artifacttypes/propertiesdefinition/winery">
+                <URI>https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img</URI>
+            </properties>
+        </Properties>
+    </ArtifactTemplate>
+</Definitions>

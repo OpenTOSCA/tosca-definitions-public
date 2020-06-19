@@ -7,15 +7,15 @@ IFS=';' read -ra NAMES <<< "$DAs";
 for i in "${NAMES[@]}"; do
   echo "KeyValue-Pair: "
   echo $i
-  IFS=',' read -ra PATH <<< "$i";
+  IFS=',' read -ra entry <<< "$i";
   echo "Key: "
-  echo ${PATH[0]}
+  echo ${entry[0]}
   echo "Value: "
-  echo ${PATH[1]}
-  if [[ "${PATH[1]}" == *.py ]]; then
+  echo ${entry[1]}
+  if [[ "${entry[1]}" == *.py ]]; then
     echo "Found DA python script"
-    echo $csarRoot${PATH[1]}
+    echo $csarRoot${entry[1]}
     # the -u forces the output to be flushed continuesly, nohup is empty without
-    /usr/bin/nohup /usr/bin/python -u $csarRoot${PATH[1]} $Condition > ~/nohup.out;
+    nohup python -u $csarRoot${entry[1]} $Condition > ~/nohup.out;
   fi
 done

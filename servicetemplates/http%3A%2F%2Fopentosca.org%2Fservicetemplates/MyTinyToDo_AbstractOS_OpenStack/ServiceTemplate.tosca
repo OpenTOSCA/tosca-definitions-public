@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions targetNamespace="http://opentosca.org/servicetemplates" id="winery-defs-for_steIgeneral1-MyTinyToDo_AbstractOS_OpenStack" xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org">
+    <ServiceTemplate name="MyTinyToDo_AbstractOS_OpenStack" targetNamespace="http://opentosca.org/servicetemplates" id="MyTinyToDo_AbstractOS_OpenStack">
+        <TopologyTemplate>
+            <NodeTemplate name="MyTinyToDoDockerContainer" minInstances="1" maxInstances="1" type="nodetypes:MyTinyToDoDockerContainer" id="MyTinyToDoDockerContainer" winery:x="356" winery:y="95" xmlns:nodetypes="http://opentosca.org/nodetypes">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <ContainerPort>80</ContainerPort>
+                        <Port>80</Port>
+                        <SSHPort>81</SSHPort>
+                        <ContainerID/>
+                        <ContainerIP/>
+                    </Properties>
+                </Properties>
+                <DeploymentArtifacts>
+                    <DeploymentArtifact name="MyTinyToDoDA" artifactType="artifacttypes:DockerContainerArtifact" artifactRef="artifacttemplates:MyTinyToDo_DA" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" xmlns:artifacttypes="http://opentosca.org/artifacttypes"/>
+                </DeploymentArtifacts>
+            </NodeTemplate>
+            <NodeTemplate name="MySQL-DB" minInstances="1" maxInstances="1" type="nodetypes:MySQL-DB" id="MySQL-DB" winery:x="1041" winery:y="89" xmlns:nodetypes="http://opentosca.org/nodetypes">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <DBName>todo</DBName>
+                        <DBUser>get_input: DBUser</DBUser>
+                        <DBPassword>get_input: DBPassword</DBPassword>
+                    </Properties>
+                </Properties>
+                <DeploymentArtifacts>
+                    <DeploymentArtifact name="MyTinyToDoDBDA" artifactType="artifacttypes:SQLArtifact" artifactRef="artifacttemplates:MyTinyToDo_DB_DA_ArtifactTemplate" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" xmlns:artifacttypes="http://opentosca.org/artifacttypes"/>
+                </DeploymentArtifacts>
+            </NodeTemplate>
+            <NodeTemplate name="MySQL-DBMS_5.7-w1" minInstances="1" maxInstances="1" type="nodetypes:MySQL-DBMS_5.7-w1" id="MySQL-DBMS_5.7-w1" winery:x="808" winery:y="357" xmlns:nodetypes="http://opentosca.org/nodetypes">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <DBMSUser>root</DBMSUser>
+                        <DBMSPassword>get_input: DBMSPassword</DBMSPassword>
+                        <DBMSPort>3306</DBMSPort>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate name="DockerEngine" minInstances="1" maxInstances="1" type="nodetypes:DockerEngine" id="DockerEngine" winery:x="307" winery:y="451" xmlns:nodetypes="http://opentosca.org/nodetypes">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <DockerEngineURL/>
+                        <DockerEngineCertificate/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate name="OperatingSystem" minInstances="1" maxInstances="1" type="nodetypes:OperatingSystem" id="OperatingSystem" winery:x="390" winery:y="613" xmlns:nodetypes="http://opentosca.org/nodetypes">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <instanceRef>get_input: instanceRef</instanceRef>
+                        <VMIP>get_input: VMIP</VMIP>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <RelationshipTemplate name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_0" xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                <SourceElement ref="MyTinyToDoDockerContainer"/>
+                <TargetElement ref="DockerEngine"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate name="ConnectsTo" type="ToscaBaseTypes:ConnectsTo" id="con_ConnectsTo_0" xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <ChannelType/>
+                    </Properties>
+                </Properties>
+                <SourceElement ref="MyTinyToDoDockerContainer"/>
+                <TargetElement ref="MySQL-DB"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_1" xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                <SourceElement ref="MySQL-DB"/>
+                <TargetElement ref="MySQL-DBMS_5.7-w1"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_2" xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                <SourceElement ref="DockerEngine"/>
+                <TargetElement ref="OperatingSystem"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_3" xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                <SourceElement ref="MySQL-DBMS_5.7-w1"/>
+                <TargetElement ref="OperatingSystem"/>
+            </RelationshipTemplate>
+        </TopologyTemplate>
+    </ServiceTemplate>
+</Definitions>

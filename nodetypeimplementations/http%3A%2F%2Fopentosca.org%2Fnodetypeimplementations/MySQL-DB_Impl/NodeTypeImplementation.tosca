@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<tosca:Definitions id="winery-defs-for_ns2-MySQL-DB_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns6="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
-    <tosca:NodeTypeImplementation name="MySQL-DB_Impl" targetNamespace="http://opentosca.org/nodetypeimplementations" nodeType="ns2:MySQL-DB" xmlns:ns2="http://opentosca.org/nodetypes">
-        <tosca:ImplementationArtifacts>
-            <tosca:ImplementationArtifact name="MySQL-DB-InstallIA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="install" artifactType="tbt:ScriptArtifact" artifactRef="ns3:MySQL-DB-InstallIA" xmlns:tbt="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns3="http://opentosca.org/artifacttemplates"/>
-            <tosca:ImplementationArtifact name="MySQL-DB-ConfigureIA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="configure" artifactType="tbt:ScriptArtifact" artifactRef="ns3:MySQL-DB-ConfigureIA" xmlns:tbt="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns3="http://opentosca.org/artifacttemplates"/>
-        </tosca:ImplementationArtifacts>
-    </tosca:NodeTypeImplementation>
-</tosca:Definitions>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/nodetypeimplementations" id="winery-defs-for_ns2-MySQL-DB_Impl">
+    <NodeTypeImplementation xmlns:nodetypes="http://opentosca.org/nodetypes" targetNamespace="http://opentosca.org/nodetypeimplementations" name="MySQL-DB_Impl" nodeType="nodetypes:MySQL-DB">
+        <ImplementationArtifacts>
+            <ImplementationArtifact xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="MySQL-DB-InstallIA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="install" artifactType="ToscaBaseTypes:ScriptArtifact" artifactRef="artifacttemplates:MySQL-DB-InstallIA"/>
+            <ImplementationArtifact xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="MySQL-DB-ConfigureIA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="configure" artifactType="ToscaBaseTypes:ScriptArtifact" artifactRef="artifacttemplates:MySQL-DB-ConfigureIA"/>
+            <ImplementationArtifact xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="MySQL-DB-FreezeIA" interfaceName="http://opentosca.org/interfaces/state" operationName="freeze" artifactType="ToscaBaseTypes:ScriptArtifact" artifactRef="artifacttemplates:MySQL-DB-FreezeIA_w1"/>
+            <ImplementationArtifact xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="MySQL-DB-DefrostIA" interfaceName="http://opentosca.org/interfaces/state" operationName="defrost" artifactType="ToscaBaseTypes:ScriptArtifact" artifactRef="artifacttemplates:MySQL-DB-DefrostIA_w1"/>
+        </ImplementationArtifacts>
+    </NodeTypeImplementation>
+</Definitions>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="org_opentosca_nodetypes_ElasticBeanstalk__org_opentosca_interfaces_pattern_containerService" targetNamespace="http://nodetypeimplementations.opentosca.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://nodetypeimplementations.opentosca.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://nodetypeimplementations.opentosca.org/" elementFormDefault="unqualified" targetNamespace="http://nodetypeimplementations.opentosca.org/" version="1.0">
+<xs:element name="connectTo" type="tns:connectTo"/>
+<xs:element name="start" type="tns:start"/>
+<xs:element name="stop" type="tns:stop"/>
+<xs:complexType name="start">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="AWSAccessKey" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="AWSSecretKey" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="AWSRegion" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="Environment" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="connectTo">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="AWSAccessKey" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="AWSSecretKey" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="AWSRegion" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="SOURCE_AppName" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="TARGET_QueueName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="stop">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="AWSAccessKey" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="AWSSecretKey" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="AWSRegion" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="AppName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="stop">
+    <wsdl:part name="parameters" element="tns:stop">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="start">
+    <wsdl:part name="parameters" element="tns:start">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="connectTo">
+    <wsdl:part name="parameters" element="tns:connectTo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="org_opentosca_nodetypes_ElasticBeanstalk__org_opentosca_interfaces_pattern_container">
+    <wsdl:operation name="start">
+      <wsdl:input name="start" message="tns:start">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="connectTo">
+      <wsdl:input name="connectTo" message="tns:connectTo">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="stop">
+      <wsdl:input name="stop" message="tns:stop">
+    </wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="org_opentosca_nodetypes_ElasticBeanstalk__org_opentosca_interfaces_pattern_containerServiceSoapBinding" type="tns:org_opentosca_nodetypes_ElasticBeanstalk__org_opentosca_interfaces_pattern_container">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="start">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="start">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="connectTo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="connectTo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="stop">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="stop">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="org_opentosca_nodetypes_ElasticBeanstalk__org_opentosca_interfaces_pattern_containerService">
+    <wsdl:port name="org_opentosca_nodetypes_ElasticBeanstalk__org_opentosca_interfaces_pattern_containerPort" binding="tns:org_opentosca_nodetypes_ElasticBeanstalk__org_opentosca_interfaces_pattern_containerServiceSoapBinding">
+      <soap:address location="http://localhost:9090/org_opentosca_nodetypes_ElasticBeanstalk__org_opentosca_interfaces_pattern_containerPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

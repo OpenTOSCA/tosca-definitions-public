@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/nodetypes" id="winery-defs-for_nodetypes-Beanstalk-App_w1-wip1">
+    <NodeType name="Beanstalk-App_w1-wip1" abstract="no" final="no" targetNamespace="http://opentosca.org/nodetypes">
+        <winery:PropertiesDefinition elementname="properties" namespace="http://opentosca.org/nodetypes/propertiesdefinition/winery">
+            <winery:properties>
+                <winery:key>Environment</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>AppUrl</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>AppName</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+        </winery:PropertiesDefinition>
+        <Interfaces>
+            <Interface name="http://www.example.com/interfaces/lifecycle">
+                <Operation name="start">
+                    <InputParameters>
+                        <InputParameter name="AWSAccessKey" type="xsd:string" required="yes"/>
+                        <InputParameter name="AWSSecretKey" type="xsd:string" required="yes"/>
+                        <InputParameter name="AWSRegion" type="xsd:string" required="yes"/>
+                        <InputParameter name="Environment" type="xsd:string" required="yes"/>
+                    </InputParameters>
+                    <OutputParameters>
+                        <OutputParameter name="AppUrl" type="xsd:string" required="yes"/>
+                        <OutputParameter name="AppName" type="xsd:string" required="yes"/>
+                    </OutputParameters>
+                </Operation>
+                <Operation name="stop">
+                    <InputParameters>
+                        <InputParameter name="AWSAccessKey" type="xsd:string" required="yes"/>
+                        <InputParameter name="AWSSecretKey" type="xsd:string" required="yes"/>
+                        <InputParameter name="AWSRegion" type="xsd:string" required="yes"/>
+                        <InputParameter name="AppName" type="xsd:string" required="yes"/>
+                    </InputParameters>
+                    <OutputParameters>
+                        <OutputParameter name="Result" type="xsd:string" required="yes"/>
+                    </OutputParameters>
+                </Operation>
+            </Interface>
+            <Interface name="http://opentosca.org/interfaces/connections/nonInterruptive">
+                <Operation name="connectTo">
+                    <InputParameters>
+                        <InputParameter name="AWSAccessKey" type="xsd:string" required="yes"/>
+                        <InputParameter name="AWSSecretKey" type="xsd:string" required="yes"/>
+                        <InputParameter name="AWSRegion" type="xsd:string" required="yes"/>
+                        <InputParameter name="SOURCE_AppName" type="xsd:String" required="yes"/>
+                        <InputParameter name="TARGET_QueueName" type="xsd:String" required="yes"/>
+                    </InputParameters>
+                    <OutputParameters>
+                        <OutputParameter name="Result" type="xsd:string" required="yes"/>
+                    </OutputParameters>
+                </Operation>
+            </Interface>
+        </Interfaces>
+    </NodeType>
+</Definitions>

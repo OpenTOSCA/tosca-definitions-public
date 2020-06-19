@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions id="winery-defs-for_ns6-Apache-Spark-App_On_VSphere" targetNamespace="http://opentosca.org/servicetemplates" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns8="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
+    <tosca:ServiceTemplate name="Apache-Spark-App_On_VSphere" targetNamespace="http://opentosca.org/servicetemplates" id="Apache-Spark-App_On_VSphere">
+        <tosca:BoundaryDefinitions>
+            <tosca:Properties>
+                <ns0:selfserviceApplicationUrl xmlns:ns0="http://www.eclipse.org/winery/model/selfservice"/>
+                <tosca:PropertyMappings>
+                    <tosca:PropertyMapping serviceTemplatePropertyRef="/*[local-name()='selfserviceApplicationUrl']" targetObjectRef="Ubuntu-14_04-VM" targetPropertyRef="concat('http://', Ubuntu-14_04-VM.Properties.VMIP, ':', '8080')"/>
+                </tosca:PropertyMappings>
+            </tosca:Properties>
+        </tosca:BoundaryDefinitions>
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate name="VSphere_5.5" type="ns4:VSphere_5.5" id="VSphere_5_5" winery:x="646" winery:y="830" xmlns:ns4="http://opentosca.org/nodetypes">
+                <tosca:Properties>
+                    <ns0:CloudProviderProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes" xmlns:ns0="http://opentosca.org/nodetypes" xmlns:ns1="http://www.eclipse.org/winery/model/selfservice">
+                        <ty:HypervisorEndpoint>https://iaasvc.informatik.uni-stuttgart.de/sdk</ty:HypervisorEndpoint>
+                        <ty:HypervisorTenantID>smartservices</ty:HypervisorTenantID>
+                        <ty:HypervisorUserName>get_input: VSphereUserName</ty:HypervisorUserName>
+                        <ty:HypervisorUserPassword>get_input: VSphereUserPassword</ty:HypervisorUserPassword>
+			</ns0:CloudProviderProperties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate name="Ubuntu-14.04-VM" type="ns4:Ubuntu-14.04-VM" id="Ubuntu-14_04-VM" winery:x="844" winery:y="514" xmlns:ns4="http://opentosca.org/nodetypes">
+                <tosca:Properties>
+                    <ns0:VirtualMachineProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes" xmlns:ns0="http://opentosca.org/nodetypes" xmlns:ns1="http://www.eclipse.org/winery/model/selfservice">
+                        <ty:VMIP/>
+                        <ty:VMInstanceID/>
+                        <ty:VMType>m1.medium.template4</ty:VMType>
+                        <ty:VMUserName>ubuntu</ty:VMUserName>
+                        <ty:VMUserPassword>NotNeeded</ty:VMUserPassword>
+                        <ty:VMPrivateKey/>
+                        <ty:VMPublicKey/>
+                        <ty:VMKeyPairName>NotNeeded</ty:VMKeyPairName>
+			</ns0:VirtualMachineProperties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate name="Apache-Spark_2.0" type="ns4:Apache-Spark_2.0" id="Apache-Spark_2_0" winery:x="744" winery:y="268" xmlns:ns4="http://opentosca.org/nodetypes"/>
+            <tosca:NodeTemplate name="Apache-Spark-App" type="ns4:Apache-Spark-App" id="Apache-Spark-App" winery:x="740" winery:y="46" xmlns:ns4="http://opentosca.org/nodetypes">
+                <tosca:DeploymentArtifacts>
+                    <tosca:DeploymentArtifact name="Pi_Estimation_DA" artifactType="ns1:ScriptArtifact" artifactRef="ns0:Pi_Estimation_DA" xmlns:ns0="http://opentosca.org/artifacttemplates" xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes"/>
+                </tosca:DeploymentArtifacts>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate name="Java8" type="ns4:Java8" id="Java8" winery:x="501" winery:y="419" xmlns:ns4="http://opentosca.org/nodetypes"/>
+            <tosca:RelationshipTemplate name="con_17" type="ns1:HostedOn" id="con_17" xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                <tosca:SourceElement ref="Apache-Spark-App"/>
+                <tosca:TargetElement ref="Apache-Spark_2_0"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_29" type="ns1:HostedOn" id="con_29" xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                <tosca:SourceElement ref="Apache-Spark_2_0"/>
+                <tosca:TargetElement ref="Ubuntu-14_04-VM"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_41" type="ns1:HostedOn" id="con_41" xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                <tosca:SourceElement ref="Ubuntu-14_04-VM"/>
+                <tosca:TargetElement ref="VSphere_5_5"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_53" type="ns1:DependsOn" id="con_53" xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                <tosca:SourceElement ref="Apache-Spark_2_0"/>
+                <tosca:TargetElement ref="Java8"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_65" type="ns1:HostedOn" id="con_65" xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes">
+                <tosca:SourceElement ref="Java8"/>
+                <tosca:TargetElement ref="Ubuntu-14_04-VM"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

@@ -8,7 +8,6 @@
 <Properties xmlns="http://www.example.org">
  <Port/>
  <ContainerPort/>
- <SSHPort/>
  <ContainerID/>
  <ContainerIP/>
  <ImageID/>
@@ -44,10 +43,6 @@
 #### Port & ContainerPort
 
 These Properties set the Port on which the container should be exposed, while ContainerPort should be the port on which the DockerContainer exposes its functionality. This is just like e.g. executing ```docker run -p 80:80``` in bash.
-
-#### SSHPort
-
-Additionally to the modeled container, this NodeType starts another Container which enables to connect to the container via SSH under the specified port
 
 #### ContainerID
 

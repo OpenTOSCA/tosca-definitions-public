@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/topologyfragmentrefinementmodels" id="winery-defs-for_otItopologyfragmentrefinementmodels-Qiskit_Python_App_IBM-w1">
+    <PatternRefinementModel name="Qiskit_Python_App_IBM-w1" targetNamespace="http://opentosca.org/topologyfragmentrefinementmodels">
+        <Detector>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="QC-App_w1" minInstances="1" maxInstances="1" type="nodetypes:QC-App_w1" id="d_QC-App_w1" winery:x="165" winery:y="117">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <Port/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="IBMQ_w1" minInstances="1" maxInstances="1" type="nodetypes:IBMQ_w1" id="d_IBMQ_w1" winery:x="165" winery:y="287">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <PROVIDER/>
+                        <IBMQ_HUB/>
+                        <IBMQ_BACKEND_NAME/>
+                        <IBMQ_TOKEN/>
+                        <IBMQ_PROJECT/>
+                        <IBMQ_GROUP/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="d_con_HostedOn_0">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+                <SourceElement ref="d_QC-App_w1"/>
+                <TargetElement ref="d_IBMQ_w1"/>
+            </RelationshipTemplate>
+        </Detector>
+        <RelationMappings>
+            <RelationMapping xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" relationType="ToscaBaseTypes:ConnectsTo" direction="ingoing" detectorNode="d_QC-App_w1" refinementNode="rs-Qiskit-App" id="relMap0"/>
+        </RelationMappings>
+        <RefinementStructure>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Qiskit_w1" minInstances="1" maxInstances="1" type="nodetypes:Qiskit_w1" id="rs-Qiskit" winery:x="369" winery:y="256">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="IBMQ_w1" minInstances="1" maxInstances="1" type="nodetypes:IBMQ_w1" id="rs-IBMQ" winery:x="704" winery:y="256">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <PROVIDER>IBMQ</PROVIDER>
+                        <IBMQ_HUB/>
+                        <IBMQ_BACKEND_NAME/>
+                        <IBMQ_TOKEN>get_input: IBMQ_TOKEN</IBMQ_TOKEN>
+                        <IBMQ_PROJECT/>
+                        <IBMQ_GROUP/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Python_3" minInstances="1" maxInstances="1" type="nodetypes:Python_3" id="rs-Python_3" winery:x="51" winery:y="351">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Qiskit-App_w1" minInstances="1" maxInstances="1" type="nodetypes:Qiskit-App_w1" id="rs-Qiskit-App" winery:x="369" winery:y="117">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <Port/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="DockerContainer" minInstances="1" maxInstances="1" type="nodetypes:DockerContainer" id="rs_DockerContainer" winery:x="369" winery:y="423">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <Port/>
+                        <ContainerPort/>
+                        <ContainerID/>
+                        <ContainerIP/>
+                        <ImageID>ubuntu:18.04</ImageID>
+                        <ContainerMountPath/>
+                        <HostMountFiles/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="DockerEngine" minInstances="1" maxInstances="1" type="nodetypes:DockerEngine" id="rs_DockerEngine" winery:x="366" winery:y="607">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <DockerEngineURL>get_input: DockerEngineUrl</DockerEngineURL>
+                        <DockerEngineCertificate/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="ConnectsTo" type="ToscaBaseTypes:ConnectsTo" id="rs-con_ConnectsTo_0">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <ChannelType/>
+                    </Properties>
+                </Properties>
+                <SourceElement ref="rs-Qiskit"/>
+                <TargetElement ref="rs-IBMQ"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="DependsOn" type="ToscaBaseTypes:DependsOn" id="rs-con_DependsOn_0">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+                <SourceElement ref="rs-Qiskit"/>
+                <TargetElement ref="rs-Python_3"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="rs-con_HostedOn_2">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+                <SourceElement ref="rs-Qiskit-App"/>
+                <TargetElement ref="rs-Qiskit"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="rs_con_HostedOn_0">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+                <SourceElement ref="rs-Python_3"/>
+                <TargetElement ref="rs_DockerContainer"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="rs_con_HostedOn_1">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+                <SourceElement ref="rs-Qiskit"/>
+                <TargetElement ref="rs_DockerContainer"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="rs_con_HostedOn_2">
+                <Properties>
+                    <Properties xmlns="http://www.example.org"/>
+                </Properties>
+                <SourceElement ref="rs_DockerContainer"/>
+                <TargetElement ref="rs_DockerEngine"/>
+            </RelationshipTemplate>
+        </RefinementStructure>
+        <AttributeMappings>
+            <AttributeMapping type="selective" detectorProperty="Port" refinementProperty="Port" detectorNode="d_QC-App_w1" refinementNode="rs-Qiskit-App" id="propMap0"/>
+            <AttributeMapping type="selective" detectorProperty="Port" refinementProperty="Port" detectorNode="d_QC-App_w1" refinementNode="rs_DockerContainer" id="propMap1"/>
+            <AttributeMapping type="selective" detectorProperty="Port" refinementProperty="ContainerPort" detectorNode="d_QC-App_w1" refinementNode="rs_DockerContainer" id="propMap2"/>
+        </AttributeMappings>
+        <StayMappings>
+            <StayMapping modelElementType="node" detectorNode="d_IBMQ_w1" refinementNode="rs-IBMQ" id="stayMap0"/>
+        </StayMappings>
+        <DeploymentArtifactMappings>
+            <DeploymentArtifactMapping xmlns:artifacttypes="http://opentosca.org/artifacttypes" artifactType="artifacttypes:QiskitApp_w1" detectorNode="d_QC-App_w1" refinementNode="rs-Qiskit-App" id="artifactMap0"/>
+        </DeploymentArtifactMappings>
+    </PatternRefinementModel>
+</Definitions>

@@ -5,8 +5,5 @@
             <ImplementationArtifact xmlns:artifacttypes1="http://opentosca.org/artifacttypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="Java_Shop_Application_DA" interfaceName="http://opentosca.org/interfaces/database" operationName="connectTo" artifactType="artifacttypes1:WAR" artifactRef="artifacttemplates:Java_Shop_Application_DA"/>
             <ImplementationArtifact xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="Install" interfaceName="http://opentosca.org/interfaces/lifecycle" operationName="install" artifactType="ToscaBaseTypes:ScriptArtifact" artifactRef="artifacttemplates:Java_Deploy_WAR_Artifacts"/>
         </ImplementationArtifacts>
-        <DeploymentArtifacts>
-            <DeploymentArtifact xmlns:artifacttypes1="http://opentosca.org/artifacttypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="Shop Application" artifactType="artifacttypes1:WAR" artifactRef="artifacttemplates:Java_Shop_Application_DA"/>
-        </DeploymentArtifacts>
     </NodeTypeImplementation>
 </Definitions>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<selfservice:Application xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org">
+    <selfservice:displayName>MyTinyToDo_AbstractOS_OpenStack</selfservice:displayName>
+    <selfservice:version>1.0</selfservice:version>
+    <selfservice:authors>Winery</selfservice:authors>
+    <selfservice:description>Installs the PHP Application MyTinyToDo as a Docker Container on a DockerEngine which is hosted on a node template of the abstract OperatingSystem node type. This abstract OperatingSystem node template gets substituted during deployment with a matching running node template instance.</selfservice:description>
+</selfservice:Application>

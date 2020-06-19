@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns1="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns2-FlinkApp_ServiceTemplate" targetNamespace="http://opentosca.org/servicetemplates">
+    <tosca:ServiceTemplate name="FlinkApp_ServiceTemplate" targetNamespace="http://opentosca.org/servicetemplates" id="FlinkApp_ServiceTemplate">
+        <tosca:BoundaryDefinitions>
+            <tosca:Properties>
+                <ns0:selfserviceApplicationUrl xmlns:ns0="http://www.eclipse.org/winery/model/selfservice"/>
+                <tosca:PropertyMappings>
+                    <tosca:PropertyMapping serviceTemplatePropertyRef="/*[local-name()='selfserviceApplicationUrl']"  targetObjectRef="Ubuntu-14_04-VM" targetPropertyRef="concat('http://', Ubuntu-14_04-VM.Properties.VMIP, ':', Flink_Simple.Properties.Port)"/>
+                </tosca:PropertyMappings>
+            </tosca:Properties>
+        </tosca:BoundaryDefinitions>
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate xmlns:ns4="http://opentosca.org/nodetypes" name="VSphere_5.5" type="ns4:VSphere_5.5" id="VSphere_5_5" winery:x="619.406" winery:y="676">
+                <tosca:Properties>
+                    <ns4:CloudProviderProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:HypervisorEndpoint>https://iaasvc.informatik.uni-stuttgart.de/sdk</ty:HypervisorEndpoint>
+                        <ty:HypervisorTenantID>smartservices</ty:HypervisorTenantID>
+                        <ty:HypervisorUserName>get_input: VSphereUserName</ty:HypervisorUserName>
+                        <ty:HypervisorUserPassword>get_input: VSphereUserPassword</ty:HypervisorUserPassword>
+			</ns4:CloudProviderProperties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns4="http://opentosca.org/nodetypes" name="Ubuntu-14.04-VM" type="ns4:Ubuntu-14.04-VM" id="Ubuntu-14_04-VM" winery:x="619.406" winery:y="467.992">
+                <tosca:Properties>
+                    <ns4:VirtualMachineProperties xmlns="http://opentosca.org/nodetypes" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:VMIP/>
+                        <ty:VMInstanceID/>
+                        <ty:VMType>m1.medium.template4</ty:VMType>
+                        <ty:VMUserName>ubuntu</ty:VMUserName>
+                        <ty:VMUserPassword>NotNeeded</ty:VMUserPassword>
+                        <ty:VMPrivateKey/>
+                        <ty:VMPublicKey/>
+                        <ty:VMKeyPairName>NotNeeded</ty:VMKeyPairName>
+			</ns4:VirtualMachineProperties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns4="http://opentosca.org/nodetypes" name="Flink_Simple" type="ns4:Flink_Simple" id="Flink_Simple" winery:x="833.742" winery:y="276.492">
+                <tosca:Properties>
+                    <ns3:Properties xmlns:ns3="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns:ty="http://opentosca.org/nodetypes">
+                        <Port>9091</Port>
+			</ns3:Properties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns4="http://opentosca.org/nodetypes" name="FlinkApp" type="ns4:FlinkApp" id="FlinkApp" winery:x="619.406" winery:y="61">
+                <tosca:DeploymentArtifacts>
+                    <tosca:DeploymentArtifact xmlns:ns0="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns8="http://opentosca.org/artifacttemplates" name="FlinkApp_DA" artifactType="ns0:ScriptArtifact" artifactRef="ns8:FlinkApp_DA_AT"/>
+                </tosca:DeploymentArtifacts>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns4="http://opentosca.org/nodetypes" name="Python_2.7" type="ns4:Python_2.7" id="Python_2_7" winery:x="408.996" winery:y="276.492"/>
+            <tosca:RelationshipTemplate xmlns:ns0="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_15" type="ns0:HostedOn" id="con_15">
+                <tosca:SourceElement ref="Ubuntu-14_04-VM"/>
+                <tosca:TargetElement ref="VSphere_5_5"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:ns0="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_16" type="ns0:HostedOn" id="con_16">
+                <tosca:SourceElement ref="Flink_Simple"/>
+                <tosca:TargetElement ref="Ubuntu-14_04-VM"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:ns0="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_29" type="ns0:HostedOn" id="con_29">
+                <tosca:SourceElement ref="FlinkApp"/>
+                <tosca:TargetElement ref="Flink_Simple"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:ns0="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_45" type="ns0:HostedOn" id="con_45">
+                <tosca:SourceElement ref="Python_2_7"/>
+                <tosca:TargetElement ref="Ubuntu-14_04-VM"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:ns0="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_59" type="ns0:DependsOn" id="con_59">
+                <tosca:SourceElement ref="FlinkApp"/>
+                <tosca:TargetElement ref="Python_2_7"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

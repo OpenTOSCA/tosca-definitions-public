@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/servicetemplates" id="winery-defs-for_servicetemplates-MyTinyToDo_Docker_On_VM">
+    <ServiceTemplate name="MyTinyToDo_Docker_On_VM" targetNamespace="http://opentosca.org/servicetemplates" id="MyTinyToDo_Docker_On_VM">
+        <TopologyTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Docker" minInstances="1" maxInstances="1" type="nodetypes:DockerEngine" id="DockerEngine" winery:x="346" winery:y="350">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <DockerEngineURL/>
+                        <DockerEngineCertificate/>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Ubuntu" minInstances="1" maxInstances="1" type="nodetypes:Ubuntu-VM_18.04-w1" id="Ubuntu-VM_18.04-w1" winery:x="345" winery:y="558">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <VMIP>get_input: Hostname</VMIP>
+                        <VMInstanceID/>
+                        <VMType/>
+                        <VMUserName>get_input: Username</VMUserName>
+                        <VMUserPassword/>
+                        <VMPrivateKey>get_input: PrivateKey</VMPrivateKey>
+                        <VMPublicKey/>
+                        <VMKeyPairName/>
+                        <State>Running</State>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="MyTinyToDo" minInstances="1" maxInstances="1" type="nodetypes:MyTinyToDoDockerContainer" id="MyTinyToDoDockerContainer" winery:x="346" winery:y="145">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <ContainerPort>80</ContainerPort>
+                        <Port>get_input: AppPort</Port>
+                        <ContainerID/>
+                        <ContainerIP/>
+                    </Properties>
+                </Properties>
+                <DeploymentArtifacts>
+                    <DeploymentArtifact xmlns:artifacttypes="http://opentosca.org/artifacttypes" xmlns:artifacttemplates="http://opentosca.org/artifacttemplates" name="MyTinyToDo" artifactType="artifacttypes:DockerContainerArtifact" artifactRef="artifacttemplates:MyTinyToDo_DA"/>
+                </DeploymentArtifacts>
+            </NodeTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_1">
+                <SourceElement ref="DockerEngine"/>
+                <TargetElement ref="Ubuntu-VM_18.04-w1"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_0">
+                <SourceElement ref="MyTinyToDoDockerContainer"/>
+                <TargetElement ref="DockerEngine"/>
+            </RelationshipTemplate>
+        </TopologyTemplate>
+    </ServiceTemplate>
+</Definitions>

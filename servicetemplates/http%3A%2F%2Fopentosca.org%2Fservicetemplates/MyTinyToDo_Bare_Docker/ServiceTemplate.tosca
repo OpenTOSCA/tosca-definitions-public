@@ -19,7 +19,6 @@
                     <ns12:Properties xmlns:ns12="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns:ty="http://opentosca.org/nodetypes">
                         <ContainerPort>80</ContainerPort>
                         <Port>get_input: ApplicationPort</Port>
-                        <SSHPort>get_input: ContainerSSHPort</SSHPort>
                         <ContainerID/>
                         <ContainerIP/>
 			</ns12:Properties>

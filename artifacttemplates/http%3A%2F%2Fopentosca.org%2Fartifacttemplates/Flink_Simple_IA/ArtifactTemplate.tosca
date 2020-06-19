@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/artifacttemplates" id="winery-defs-for_artifacttemplates-Flink_Simple_IA">
+    <ArtifactTemplate xmlns:artifacttypes="http://opentosca.org/artifacttypes" name="Flink_Simple_IA" type="artifacttypes:Ansible" id="Flink_Simple_IA">
+        <Properties>
+            <ns21:Properties xmlns:ns21="http://opentosca.org/artifacttypes/propertiesdefinition/winery" xmlns="http://opentosca.org/artifacttypes/propertiesdefinition/winery" xmlns:artifacttypes1="http://opentosca.org/artifacttypes" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" xmlns:ns3="http://opentosca.org/artifacttypes" xmlns:ns5="http://opentosca.org/artifacttypes" xmlns:ns6="http://www.eclipse.org/winery/model/selfservice" xmlns:ns7="http://www.eclipse.org/winery/model/selfservice" xmlns:ns8="http://opentosca.org/artifacttypes" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12">
+                <Playbook>base.yml</Playbook>
+                <Variables>--extra-vars "user_name={{VMUserName}} port={{Port}}"</Variables>
+	</ns21:Properties>
+        </Properties>
+        <ArtifactReferences>
+            <ArtifactReference reference="artifacttemplates/http%253A%252F%252Fopentosca.org%252Fartifacttemplates/Flink_Simple_IA/files/Flink_Simple4OpenTOSCA.zip"/>
+        </ArtifactReferences>
+    </ArtifactTemplate>
+</Definitions>

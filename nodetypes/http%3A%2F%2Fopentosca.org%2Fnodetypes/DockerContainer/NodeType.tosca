@@ -11,10 +11,6 @@
                 <winery:type>xsd:string</winery:type>
             </winery:properties>
             <winery:properties>
-                <winery:key>SSHPort</winery:key>
-                <winery:type>xsd:string</winery:type>
-            </winery:properties>
-            <winery:properties>
                 <winery:key>ContainerID</winery:key>
                 <winery:type>xsd:string</winery:type>
             </winery:properties>
@@ -39,8 +35,9 @@
             <Interface name="ContainerManagementInterface">
                 <Operation name="runScript">
                     <InputParameters>
-                        <InputParameter name="ContainerIP" type="xs:string" required="yes"/>
-                        <InputParameter name="SSHPort" type="xs:string" required="yes"/>
+                        <InputParameter name="DockerEngineURL" type="xs:string" required="yes"/>
+                        <InputParameter name="DockerEngineCertificate" type="xs:string" required="no"/>
+                        <InputParameter name="ContainerID" type="xs:string" required="yes"/>
                         <InputParameter name="Script" type="xs:string" required="yes"/>
                     </InputParameters>
                     <OutputParameters>
@@ -49,8 +46,9 @@
                 </Operation>
                 <Operation name="transferFile">
                     <InputParameters>
-                        <InputParameter name="ContainerIP" type="xs:string" required="yes"/>
-                        <InputParameter name="SSHPort" type="xs:string" required="yes"/>
+                        <InputParameter name="DockerEngineURL" type="xs:string" required="yes"/>
+                        <InputParameter name="DockerEngineCertificate" type="xs:string" required="no"/>
+                        <InputParameter name="ContainerID" type="xs:string" required="yes"/>
                         <InputParameter name="TargetAbsolutePath" type="xs:string" required="yes"/>
                         <InputParameter name="SourceURLorLocalPath" type="xs:string" required="yes"/>
                     </InputParameters>

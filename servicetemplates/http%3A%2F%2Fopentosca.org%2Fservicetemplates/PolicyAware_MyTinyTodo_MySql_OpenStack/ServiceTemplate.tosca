@@ -76,7 +76,6 @@
                     <Properties xmlns="http://opentosca.org/nodetypes/propertiesdefinition/winery" xmlns:ty="http://opentosca.org/nodetypes">
                         <ContainerPort>80</ContainerPort>
                         <Port>80</Port>
-                        <SSHPort>81</SSHPort>
                         <ContainerID/>
                         <ContainerIP/>
 			</Properties>

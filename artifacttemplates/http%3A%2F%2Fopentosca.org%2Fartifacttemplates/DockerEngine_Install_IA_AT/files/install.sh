@@ -7,6 +7,8 @@ if [ "" != "$installed" ]; then
 	exit 0;
 else
 	echo "Installing Docker Engine";
+	export DEBIAN_FRONTEND=noninteractive;
+	sudo dpkg --configure -a;
 	curl -sSL https://get.docker.com | sh
 	sudo sed -ie "s@ExecStart=\/usr\/bin\/dockerd -H fd:\/\/@ExecStart=\/usr\/bin\/dockerd -H fd:\/\/ -H tcp:\/\/0.0.0.0:2375 -H unix:///var/run/docker.sock@g" /lib/systemd/system/docker.service
 	echo 'DOCKER_OPTS="-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"' >> /etc/default/docker

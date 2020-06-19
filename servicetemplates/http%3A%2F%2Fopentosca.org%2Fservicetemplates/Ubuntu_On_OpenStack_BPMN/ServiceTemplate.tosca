@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/servicetemplates" id="winery-defs-for_servicetemplates-Ubuntu_On_OpenStack_BPMN">
+    <ServiceTemplate name="Ubuntu_On_OpenStack_BPMN" targetNamespace="http://opentosca.org/servicetemplates" id="Ubuntu_On_OpenStack_BPMN">
+        <BoundaryDefinitions>
+            <Properties>
+                <ns0:SmartService xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12">
+                    <smartServiceType xmlns="" xmlns:ns7="http://docs.oasis-open.org/tosca/ns/2011/12">VMProviderService</smartServiceType>
+                    <VMIP xmlns="" xmlns:ns7="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+                </ns0:SmartService>
+                <PropertyMappings>
+                    <PropertyMapping serviceTemplatePropertyRef="/*[local-name()='SmartService']/*[local-name()='VMIP']" targetObjectRef="Ubuntu-18_04-VM" targetPropertyRef="/*[local-name()='VirtualMachineProperties']/*[local-name()='VMIP']"/>
+                </PropertyMappings>
+            </Properties>
+            <Interfaces>
+                <Interface name="OpenTOSCA-Lifecycle-Interface">
+                    <Operation name="initiate">
+                        <Plan planRef="Build_Plan_BPMN"/>
+                    </Operation>
+                </Interface>
+            </Interfaces>
+        </BoundaryDefinitions>
+        <TopologyTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="OpenStack-Liberty-12" minInstances="1" maxInstances="1" type="nodetypes:OpenStack-Liberty-12" id="OpenStack-Liberty-12" winery:x="638.991" winery:y="482">
+                <Properties>
+                    <ns0:CloudProviderProperties xmlns:ns0="http://opentosca.org/nodetypes" xmlns="http://opentosca.org/nodetypes" xmlns:ns2="http://www.eclipse.org/winery/model/selfservice" xmlns:ns3="http://opentosca.org/nodetypes" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:HypervisorEndpoint>asflexsm.informatik.uni-stuttgart.de</ty:HypervisorEndpoint>
+                        <ty:HypervisorTenantID>SmartServices</ty:HypervisorTenantID>
+                        <ty:HypervisorUserName/>
+                        <ty:HypervisorUserPassword/>
+			</ns0:CloudProviderProperties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:nodetypes="http://opentosca.org/nodetypes" name="Ubuntu-18.04-VM" minInstances="1" maxInstances="1" type="nodetypes:Ubuntu-VM_18.04-w1" id="Ubuntu-18_04-VM" winery:x="639.997" winery:y="95.9943">
+                <Properties>
+                    <ns0:VirtualMachineProperties xmlns:ns0="http://opentosca.org/nodetypes" xmlns="http://opentosca.org/nodetypes" xmlns:ns2="http://www.eclipse.org/winery/model/selfservice" xmlns:ns3="http://opentosca.org/nodetypes" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:VMIP/>
+                        <ty:VMInstanceID/>
+                        <ty:VMType>m1.small</ty:VMType>
+                        <ty:VMUserName>ubuntu</ty:VMUserName>
+                        <ty:VMUserPassword>N/A</ty:VMUserPassword>
+                        <ty:VMPrivateKey/>
+                        <ty:VMPublicKey>N/A</ty:VMPublicKey>
+                        <ty:VMKeyPairName/>
+			</ns0:VirtualMachineProperties>
+                </Properties>
+            </NodeTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_17" type="ToscaBaseTypes:HostedOn" id="con_17">
+                <SourceElement ref="Ubuntu-18_04-VM"/>
+                <TargetElement ref="OpenStack-Liberty-12"/>
+            </RelationshipTemplate>
+        </TopologyTemplate>
+        <Plans>
+            <Plan id="Build_Plan_BPMN" name="Build_Plan_BPMN" planType="http://docs.oasis-open.org/tosca/ns/2011/12/PlanTypes/BuildPlan" planLanguage="http://www.omg.org/spec/BPMN/20100524/MODEL">
+                <InputParameters>
+                    <InputParameter name="instanceDataAPIUrl" type="xsd:string" required="yes"/>
+                    <InputParameter name="CorrelationID" type="xsd:string" required="yes"/>
+                    <InputParameter name="HypervisorEndpoint" type="xsd:string" required="yes"/>
+                    <InputParameter name="HypervisorTenantID" type="xsd:string" required="yes"/>
+                    <InputParameter name="HypervisorUserName" type="xsd:string" required="yes"/>
+                    <InputParameter name="HypervisorUserPassword" type="xsd:string" required="yes"/>
+                    <InputParameter name="VMPrivateKey" type="xsd:String" required="yes"/>
+                    <InputParameter name="VMKeyPairName" type="xsd:string" required="yes"/>
+                </InputParameters>
+                <OutputParameters>
+                    <OutputParameter name="Result" type="xsd:string" required="yes"/>
+                </OutputParameters>
+                <PlanModelReference reference="../servicetemplates/http%253A%252F%252Fopentosca.org%252Fservicetemplates/Ubuntu_On_OpenStack_BPMN/plans/Build_Plan_BPMN/Ubuntu_On_OpenStack_BPMN.zip"/>
+            </Plan>
+        </Plans>
+    </ServiceTemplate>
+</Definitions>

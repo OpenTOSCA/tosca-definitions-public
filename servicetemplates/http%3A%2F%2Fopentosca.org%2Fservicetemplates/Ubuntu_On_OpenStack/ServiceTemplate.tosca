@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns5-Ubuntu_On_OpenStack" targetNamespace="http://opentosca.org/servicetemplates">
+    <tosca:ServiceTemplate name="Ubuntu VM on OpenStack" targetNamespace="http://opentosca.org/servicetemplates" id="Ubuntu_On_OpenStack">
+        <tosca:BoundaryDefinitions>
+            <tosca:Properties>
+                <ns0:SmartService xmlns:ns0="http://www.eclipse.org/winery/model/selfservice">
+                    <smartServiceType>VMProviderService</smartServiceType>
+                    <VMIP/>
+</ns0:SmartService>
+                <tosca:PropertyMappings>
+                    <tosca:PropertyMapping serviceTemplatePropertyRef="/*[local-name()='SmartService']/*[local-name()='VMIP']" targetObjectRef="Ubuntu-14_04-VM" targetPropertyRef="/*[local-name()='VirtualMachineProperties']/*[local-name()='VMIP']"/>
+                </tosca:PropertyMappings>
+            </tosca:Properties>
+        </tosca:BoundaryDefinitions>
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate xmlns:ns3="http://opentosca.org/nodetypes" name="OpenStack-Liberty-12" type="ns3:OpenStack-Liberty-12" id="OpenStack-Liberty-12" winery:x="638.991" winery:y="482">
+                <tosca:Properties>
+                    <ns0:CloudProviderProperties xmlns:ns0="http://opentosca.org/nodetypes" xmlns="http://opentosca.org/nodetypes" xmlns:ns2="http://www.eclipse.org/winery/model/selfservice" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:HypervisorEndpoint>asflexsm.informatik.uni-stuttgart.de</ty:HypervisorEndpoint>
+                        <ty:HypervisorTenantID>SmartServices</ty:HypervisorTenantID>
+                        <ty:HypervisorUserName>get_input: OpenStackUser</ty:HypervisorUserName>
+                        <ty:HypervisorUserPassword>get_input: OpenStackUserPassword</ty:HypervisorUserPassword>
+			</ns0:CloudProviderProperties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:ns3="http://opentosca.org/nodetypes" name="Ubuntu-14.04-VM" type="ns3:Ubuntu-14.04-VM" id="Ubuntu-14_04-VM" winery:x="639.997" winery:y="95.9943">
+                <tosca:Properties>
+                    <ns0:VirtualMachineProperties xmlns:ns0="http://opentosca.org/nodetypes" xmlns="http://opentosca.org/nodetypes" xmlns:ns2="http://www.eclipse.org/winery/model/selfservice" xmlns:ty="http://opentosca.org/nodetypes">
+                        <ty:VMIP/>
+                        <ty:VMInstanceID/>
+                        <ty:VMType>m1.small</ty:VMType>
+                        <ty:VMUserName>ubuntu</ty:VMUserName>
+                        <ty:VMUserPassword>N/A</ty:VMUserPassword>
+                        <ty:VMPrivateKey>get_input: VMPrivateKey</ty:VMPrivateKey>
+                        <ty:VMPublicKey>N/A</ty:VMPublicKey>
+                        <ty:VMKeyPairName>get_input: VMKeyPairName</ty:VMKeyPairName>
+			</ns0:VirtualMachineProperties>
+                </tosca:Properties>
+            </tosca:NodeTemplate>
+            <tosca:RelationshipTemplate xmlns:ns6="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="con_17" type="ns6:HostedOn" id="con_17">
+                <tosca:SourceElement ref="Ubuntu-14_04-VM"/>
+                <tosca:TargetElement ref="OpenStack-Liberty-12"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

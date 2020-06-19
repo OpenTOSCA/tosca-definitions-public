@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/nodetypes" id="winery-defs-for_nodetypes-SimpleQueueService_w1-wip1">
+    <NodeType name="SimpleQueueService_w1-wip1" abstract="no" final="no" targetNamespace="http://opentosca.org/nodetypes">
+        <Interfaces>
+            <Interface name="http://opentosca.org/interfaces/pattern/container">
+                <Operation name="create">
+                    <InputParameters>
+                        <InputParameter name="AWSAccessKey" type="xsd:string" required="yes"/>
+                        <InputParameter name="AWSSecretKey" type="xsd:string" required="yes"/>
+                        <InputParameter name="AWSRegion" type="xsd:string" required="yes"/>
+                        <InputParameter name="FifoQueue" type="xsd:string" required="yes"/>
+                    </InputParameters>
+                    <OutputParameters>
+                        <OutputParameter name="QueueName" type="xsd:string" required="yes"/>
+                        <OutputParameter name="QueueUrl" type="xsd:string" required="yes"/>
+                    </OutputParameters>
+                </Operation>
+                <Operation name="terminate">
+                    <InputParameters>
+                        <InputParameter name="AWSAccessKey" type="xsd:string" required="yes"/>
+                        <InputParameter name="AWSSecretKey" type="xsd:string" required="yes"/>
+                        <InputParameter name="AWSRegion" type="xsd:string" required="yes"/>
+                        <InputParameter name="QueueUrl" type="xsd:string" required="yes"/>
+                    </InputParameters>
+                    <OutputParameters>
+                        <OutputParameter name="Result" type="xsd:string" required="yes"/>
+                    </OutputParameters>
+                </Operation>
+            </Interface>
+        </Interfaces>
+    </NodeType>
+</Definitions>

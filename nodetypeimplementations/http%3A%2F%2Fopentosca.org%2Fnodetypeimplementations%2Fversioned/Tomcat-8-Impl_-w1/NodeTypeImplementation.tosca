@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<tosca:Definitions xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns11="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns5-Tomcat-8-Impl_-w1" targetNamespace="http://opentosca.org/nodetypeimplementations/versioned">
-    <tosca:NodeTypeImplementation xmlns:ns6="http://opentosca.org/nodetypes/versioned" name="Tomcat-8-Impl_-w1" targetNamespace="http://opentosca.org/nodetypeimplementations/versioned" nodeType="ns6:Tomcat_8-w1">
-        <tosca:ImplementationArtifacts>
-            <tosca:ImplementationArtifact xmlns:ns10="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns2="http://opentosca.org/artifacttemplates/versioned" name="Tomcat-8-Install-IA" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="install" artifactType="ns10:ScriptArtifact" artifactRef="ns2:Tomcat-8-Install_-w1"/>
-            <tosca:ImplementationArtifact xmlns:ns10="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns2="http://opentosca.org/artifacttemplates/versioned" name="Tomcat-8-Start" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="start" artifactType="ns10:ScriptArtifact" artifactRef="ns2:Tomcat-8-Start_-w1"/>
-        </tosca:ImplementationArtifacts>
-    </tosca:NodeTypeImplementation>
-</tosca:Definitions>

@@ -7,14 +7,14 @@ IFS=';' read -ra NAMES <<< "$DAs";
 for i in "${NAMES[@]}"; do
         #echo "KeyValue-Pair: "
         #echo $i
-        IFS=',' read -ra PATH <<< "$i";    
+        IFS=',' read -ra entry <<< "$i";    
         #echo "Key: "
-        #echo ${PATH[0]}
+        #echo ${entry[0]}
         #echo "Value: "
-        #echo ${PATH[1]}
-        if [[ "${PATH[1]}" == *.js ]];
+        #echo ${entry[1]}
+        if [[ "${entry[1]}" == *.js ]];
         then    
-        /usr/bin/nohup /usr/bin/node $csarRoot${PATH[1]} Port=$Port &
+        nohup node $csarRoot${entry[1]} Port=$Port &
         fi
 done
 

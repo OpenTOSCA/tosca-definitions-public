@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="org_opentosca_nodetypes_OpenStack_Liberty_12__org_opentosca_interfaces_testService" targetNamespace="http://nodetypeimplementations.opentosca.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://nodetypeimplementations.opentosca.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://nodetypeimplementations.opentosca.org/" elementFormDefault="unqualified" targetNamespace="http://nodetypeimplementations.opentosca.org/" version="1.0">
+<xs:element name="testCredentials" type="tns:testCredentials"/>
+<xs:complexType name="testCredentials">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="HypervisorEndpoint" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="HypervisorTenantID" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="HypervisorUserName" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="HypervisorUserPassword" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="testCredentials">
+    <wsdl:part name="parameters" element="tns:testCredentials">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="org_opentosca_nodetypes_OpenStack_Liberty_12__org_opentosca_interfaces_test">
+    <wsdl:operation name="testCredentials">
+      <wsdl:input name="testCredentials" message="tns:testCredentials">
+    </wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="org_opentosca_nodetypes_OpenStack_Liberty_12__org_opentosca_interfaces_testServiceSoapBinding" type="tns:org_opentosca_nodetypes_OpenStack_Liberty_12__org_opentosca_interfaces_test">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="testCredentials">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="testCredentials">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="org_opentosca_nodetypes_OpenStack_Liberty_12__org_opentosca_interfaces_testService">
+    <wsdl:port name="org_opentosca_nodetypes_OpenStack_Liberty_12__org_opentosca_interfaces_testPort" binding="tns:org_opentosca_nodetypes_OpenStack_Liberty_12__org_opentosca_interfaces_testServiceSoapBinding">
+      <soap:address location="http://localhost:9090/org_opentosca_nodetypes_OpenStack_Liberty_12__org_opentosca_interfaces_testPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

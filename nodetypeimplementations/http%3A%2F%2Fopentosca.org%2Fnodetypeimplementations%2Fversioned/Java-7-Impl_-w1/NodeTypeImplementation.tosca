@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<tosca:Definitions id="winery-defs-for_ns2-Java-7-Impl_-w1" targetNamespace="http://opentosca.org/nodetypeimplementations/versioned" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns6="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
-    <tosca:NodeTypeImplementation name="Java-7-Impl_-w1" targetNamespace="http://opentosca.org/nodetypeimplementations/versioned" nodeType="ns2:Java_7-w1" xmlns:ns2="http://opentosca.org/nodetypes/versioned">
-        <tosca:ImplementationArtifacts>
-            <tosca:ImplementationArtifact name="Java-7-Impl-InstallIA-AT" interfaceName="http://www.example.com/interfaces/lifecycle" operationName="install" artifactType="tbt:ScriptArtifact" artifactRef="ns3:Java-7-Impl-InstallIA-AT_-w1" xmlns:ns3="http://opentosca.org/artifacttemplates/versioned" xmlns:tbt="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes"/>
-        </tosca:ImplementationArtifacts>
-    </tosca:NodeTypeImplementation>
-</tosca:Definitions>

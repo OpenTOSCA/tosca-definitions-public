@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="http://opentosca.org/nodetypes" id="winery-defs-for_ns2-Flink_Simple">
+    <NodeType name="Flink_Simple" abstract="no" final="no" targetNamespace="http://opentosca.org/nodetypes" winery:bordercolor="#c095b1">
+        <winery:PropertiesDefinition elementname="Properties" namespace="http://opentosca.org/nodetypes/properties">
+            <winery:properties>
+                <winery:key>Port</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+        </winery:PropertiesDefinition>
+        <Interfaces>
+            <Interface name="http://www.example.com/interfaces/lifecycle">
+                <Operation name="install">
+                    <InputParameters>
+                        <InputParameter name="VMUserName" type="xsd:String" required="yes"/>
+                        <InputParameter name="Port" type="xsd:String" required="yes"/>
+                    </InputParameters>
+                </Operation>
+            </Interface>
+        </Interfaces>
+    </NodeType>
+</Definitions>

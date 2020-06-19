@@ -30,3 +30,5 @@ echo "<?php
 \$config['template'] = 'default';
 \$config['showdate'] = 1;
 ?>" > /var/www/html/db/config.php
+
+echo "Done."

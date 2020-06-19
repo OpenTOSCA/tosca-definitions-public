@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Definitions xmlns="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:selfservice="http://www.eclipse.org/winery/model/selfservice" xmlns:testwineryopentoscaorg="http://test.winery.opentosca.org" targetNamespace="https://examples.opentosca.org/edmm/servicetemplates" id="winery-defs-for_steIgeneral1-PetClinic_EDMM-w1">
+    <ServiceTemplate name="PetClinic_EDMM-w1" targetNamespace="https://examples.opentosca.org/edmm/servicetemplates" id="PetClinic_EDMM-w1">
+        <TopologyTemplate>
+            <NodeTemplate xmlns:ntyIgeneral="https://examples.opentosca.org/edmm/nodetypes" name="pet_clinic_ubuntu" minInstances="1" maxInstances="1" type="ntyIgeneral:Ubuntu_18.04-w1" id="pet_clinic_ubuntu" winery:x="350" winery:y="400">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <os_family/>
+                        <machine_image>ubuntu</machine_image>
+                        <instance_type>large</instance_type>
+                        <key_name>edmm</key_name>
+                        <public_key>-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqGKukO1De7zhZj6+H0qtjTkVxwTCpvKe4eCZ0
+FPqri0cb2JZfXJ/DgYSF6vUpwmJG8wVQZKjeGcjDOL5UlsuusFncCzWBQ7RKNUSesmQRMSGkVb1/
+3j+skZ6UtW+5u09lHNsj6tQ51s1SPrCBkedbNf0Tp0GbMJDyR4e9T04ZZwIDAQAB
+-----END PUBLIC KEY-----</public_key>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:ntyIgeneral="https://examples.opentosca.org/edmm/nodetypes" name="db_ubuntu" minInstances="1" maxInstances="1" type="ntyIgeneral:Ubuntu_18.04-w1" id="db_ubuntu" winery:x="700" winery:y="400">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <os_family/>
+                        <machine_image>ubuntu</machine_image>
+                        <instance_type>large</instance_type>
+                        <key_name>edmm</key_name>
+                        <public_key>-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqGKukO1De7zhZj6+H0qtjTkVxwTCpvKe4eCZ0
+FPqri0cb2JZfXJ/DgYSF6vUpwmJG8wVQZKjeGcjDOL5UlsuusFncCzWBQ7RKNUSesmQRMSGkVb1/
+3j+skZ6UtW+5u09lHNsj6tQ51s1SPrCBkedbNf0Tp0GbMJDyR4e9T04ZZwIDAQAB
+-----END PUBLIC KEY-----</public_key>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:ntyIgeneral="https://examples.opentosca.org/edmm/nodetypes" name="pet_clinc_tomcat" minInstances="1" maxInstances="1" type="ntyIgeneral:Tomcat_w1" id="tomcat" winery:x="350" winery:y="240"/>
+            <NodeTemplate xmlns:ntyIgeneral="https://examples.opentosca.org/edmm/nodetypes" name="pet_clinic" minInstances="1" maxInstances="1" type="ntyIgeneral:Pet_Clinic_w1" id="pet_clinic" winery:x="350" winery:y="90">
+                <DeploymentArtifacts>
+                    <DeploymentArtifact xmlns:artifacttypes="http://opentosca.org/artifacttypes" xmlns:ateIgeneral="https://examples.opentosca.org/edmm/artifacttemplates" name="DA" artifactType="artifacttypes:WAR" artifactRef="ateIgeneral:Pet-Clinic-DA_w1"/>
+                </DeploymentArtifacts>
+            </NodeTemplate>
+            <NodeTemplate xmlns:ntyIgeneral="https://examples.opentosca.org/edmm/nodetypes" name="db" minInstances="1" maxInstances="1" type="ntyIgeneral:MySQL_Database_w1" id="db" winery:x="700" winery:y="90">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <schema_name>petclinic</schema_name>
+                        <user>pc</user>
+                        <password>petclinic</password>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <NodeTemplate xmlns:ntyIgeneral="https://examples.opentosca.org/edmm/nodetypes" name="dbms" minInstances="1" maxInstances="1" type="ntyIgeneral:MySQL_DBMS_w1" id="dbms" winery:x="700" winery:y="240">
+                <Properties>
+                    <Properties xmlns="http://www.example.org">
+                        <root_password>petclinic</root_password>
+                    </Properties>
+                </Properties>
+            </NodeTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_1">
+                <SourceElement ref="tomcat"/>
+                <TargetElement ref="pet_clinic_ubuntu"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_2">
+                <SourceElement ref="pet_clinic"/>
+                <TargetElement ref="tomcat"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_0">
+                <SourceElement ref="db"/>
+                <TargetElement ref="dbms"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ToscaBaseTypes="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" name="HostedOn" type="ToscaBaseTypes:HostedOn" id="con_HostedOn_3">
+                <SourceElement ref="dbms"/>
+                <TargetElement ref="db_ubuntu"/>
+            </RelationshipTemplate>
+            <RelationshipTemplate xmlns:ntyIgeneral1="https://examples.opentosca.org/edmm/relationshiptypes" name="ConnectsTo" type="ntyIgeneral1:connects_to_w1" id="con_connects_to_w1_0">
+                <SourceElement ref="pet_clinic"/>
+                <TargetElement ref="db"/>
+            </RelationshipTemplate>
+        </TopologyTemplate>
+    </ServiceTemplate>
+</Definitions>
