@@ -2,6 +2,8 @@
 
 > TOSCA Definitions (e.g., Node Types and Service Templates) prepared for being consumed by a TOSCA-compliant engine, such as the [OpenTOSCA Container](http://opentosca.github.io/container).
 
+⚠️ This repository is deprecated, please use our [example applications](https://github.com/OpenTOSCA/tosca-definitions-example-applications).
+
 ## Haftungsausschluss
 
 Dies ist ein Forschungsprototyp und enthält insbesondere Beiträge von Studenten.
